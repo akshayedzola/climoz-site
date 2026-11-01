@@ -1,0 +1,30 @@
+name: Website issue
+description: Something on the Climoz website is broken, wrong, outdated or could be better.
+title: "[site] Short problem"
+body:
+  - type: markdown
+    attributes:
+      value: Please do not include visitors' or enquirers' personal details. Describe the problem, not the person.
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      options: [bug, content, design, accessibility, SEO, idea]
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should happen instead?
+  - type: input
+    id: device
+    attributes:
+      label: Device and browser
+      placeholder: Phone, Chrome
+
