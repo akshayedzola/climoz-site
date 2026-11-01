@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const failures = [];
@@ -9,6 +9,8 @@ function requireText(text, description) {
 
 requireText('<title>Climoz | ESG &amp; climate data systems</title>', 'page title');
 requireText('<link rel="canonical" href="https://akshayedzola.github.io/climoz-site/">', 'canonical URL');
+requireText('<link rel="icon" href="favicon.svg" type="image/svg+xml">', 'favicon');
+if (!existsSync(new URL('../favicon.svg', import.meta.url))) failures.push('Missing favicon.svg');
 requireText('name="WebToLeads4805054000017631043"', 'Zoho Web-to-Lead form');
 requireText("fetch('https://crm.zoho.com/crm/WebToLeadForm'", 'Zoho submission endpoint');
 requireText('name="LEADCF41" value="Zoho Consulting"', 'temporary CRM category');
