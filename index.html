@@ -1,7 +1,8 @@
 <!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Climoz Homepage</title>
+<title>Climoz | ESG &amp; climate data systems</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Climoz builds custom ESG and climate data systems for Indian exporters, suppliers and listed companies: CBAM, supplier ESG, GHG calculators, BRSR data and project MRV, built on Zoho.">
+<link rel="canonical" href="https://akshayedzola.github.io/climoz-site/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -42,14 +43,16 @@
 }
 
 *{box-sizing:border-box}
+html{margin:0;min-width:0;overflow-x:hidden}
 body{
+  margin:0;min-width:0;overflow-x:hidden;
   background:var(--ground); color:var(--ink);
   font-family:var(--body); font-size:17px; line-height:1.6;
   -webkit-font-smoothing:antialiased;
 }
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--ground)}
 a{color:inherit}
-.wrap{max-width:var(--wrap);margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 @media (min-width:700px){.wrap{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
 h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-0.02em;line-height:1.08;text-wrap:balance;margin:0}
 h2{font-size:clamp(30px,4vw,46px)}
@@ -81,7 +84,7 @@ p{margin:0}
 .nav a:hover{color:var(--ink)}
 .top .btn{padding:11px 16px;font-size:14.5px}
 @media (max-width:980px){.nav{display:none}.top .btn{margin-left:auto}}
-@media (max-width:520px){.brand small{display:none}.top .btn span.long{display:none}}
+@media (max-width:520px){.brand small{display:none}.top .btn span.long{display:none}.top .wrap{gap:12px}.top .btn{padding:10px 13px}}
 
 /* Hero */
 .hero{position:relative;overflow:hidden}
@@ -89,6 +92,7 @@ p{margin:0}
   background-image:linear-gradient(var(--rule) 1px,transparent 1px),linear-gradient(90deg,var(--rule) 1px,transparent 1px);
   background-size:28px 28px;opacity:.45;mask-image:linear-gradient(180deg,#000 0%,transparent 85%);-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 85%)}
 .hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-block:72px 64px}
+.hero .wrap>*{min-width:0}
 @media (max-width:980px){.hero .wrap{grid-template-columns:1fr;gap:40px;padding-block:44px 48px}}
 .hero h1{font-size:clamp(40px,5.6vw,72px);font-weight:800;letter-spacing:-0.035em;line-height:1.0}
 .hero h1 em{font-style:normal;color:var(--leaf)}
@@ -108,7 +112,7 @@ p{margin:0}
 .tab{font:500 14px/1 var(--body);color:var(--ink-2);background:none;border:0;border-bottom:2px solid transparent;padding:10px 10px 12px;cursor:pointer;white-space:nowrap}
 .tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--leaf)}
 .panel{padding:18px}
-.panel h4{margin:0 0 4px;font:600 16px/1.3 var(--body)}
+.panel h2{margin:0 0 4px;font:600 19px/1.3 var(--body);letter-spacing:0}
 .panel .sub{font-size:13.5px;color:var(--ink-2);margin-bottom:14px}
 .calc{width:100%;border-collapse:collapse;font-size:14px}
 .calc td{padding:9px 0;border-bottom:1px dashed var(--rule);vertical-align:top}
@@ -256,8 +260,9 @@ form.book{background:var(--sheet);border:1px solid var(--rule);border-radius:14p
 @media (max-width:520px){.row2{grid-template-columns:1fr}}
 .field{display:grid;gap:6px;min-width:0}
 .field label{font:500 13.5px/1.2 var(--body)}
-.field input,.field select{font:400 16px/1.3 var(--body);color:var(--ink);background:var(--ground);border:1px solid var(--rule);border-radius:8px;padding:12px 12px;width:100%}
-.field input:focus,.field select:focus{outline:2px solid var(--leaf);outline-offset:0;border-color:transparent}
+.field input,.field select,.field textarea{font:400 16px/1.3 var(--body);color:var(--ink);background:var(--ground);border:1px solid var(--rule);border-radius:8px;padding:12px 12px;width:100%}
+.field textarea{min-height:112px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--leaf);outline-offset:0;border-color:transparent}
 fieldset{border:0;padding:0;margin:0;display:grid;gap:8px}
 legend{font:500 13.5px/1.2 var(--body);margin-bottom:8px}
 .opts{display:flex;flex-wrap:wrap;gap:8px}
@@ -266,6 +271,7 @@ legend{font:500 13.5px/1.2 var(--body);margin-bottom:8px}
 .opts label:has(input:checked){border-color:var(--leaf);background:var(--leaf-soft)}
 .form-foot{font-size:13px;color:var(--ink-2)}
 .form-msg{font-size:14.5px;padding:12px 14px;border-radius:8px;background:var(--leaf-soft)}
+.form-msg.error{background:var(--ochre-soft);color:var(--ink)}
 
 /* Footer */
 footer{background:var(--band);color:var(--band-2);padding-block:56px 40px;font-size:14.5px}
@@ -274,7 +280,7 @@ footer .wrap{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:36px}
 @media (max-width:520px){footer .wrap{grid-template-columns:1fr}}
 footer .brand b{color:var(--band-fg)}
 footer .brand small{color:var(--band-2);display:inline}
-footer h4{margin:0 0 12px;font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--band-fg)}
+footer h3{margin:0 0 12px;font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--band-fg)}
 footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 footer a{text-decoration:none}
 footer a:hover{color:var(--band-fg)}
@@ -332,7 +338,7 @@ footer a:hover{color:var(--band-fg)}
       </div>
 
       <div class="panel" role="tabpanel" id="p-cbam" aria-labelledby="t-cbam">
-        <h4>Hot-rolled coil, CN 7208 · shipment to an EU buyer</h4>
+        <h2>Hot-rolled coil, CN 7208 · shipment to an EU buyer</h2>
         <p class="sub">Embedded emissions per tonne, from your plant data instead of EU default values.</p>
         <table class="calc">
           <tr><td>Direct emissions, installation<span class="f">fuel + process records, Q2</span></td><td>1.71 tCO₂e/t</td></tr>
@@ -344,7 +350,7 @@ footer a:hover{color:var(--band-fg)}
       </div>
 
       <div class="panel" role="tabpanel" id="p-sup" aria-labelledby="t-sup" hidden>
-        <h4>Packaging suppliers · FY 2026-27 onboarding</h4>
+        <h2>Packaging suppliers · FY 2026-27 onboarding</h2>
         <p class="sub">Self-assessment, documents and risk tier in one record per supplier.</p>
         <table class="calc">
           <tr><td>Sri Murugan Corrugators<span class="f">questionnaire 100% · code of conduct signed</span></td><td>78 <span class="tier low">LOW</span></td></tr>
@@ -356,7 +362,7 @@ footer a:hover{color:var(--band-fg)}
       </div>
 
       <div class="panel" role="tabpanel" id="p-ghg" aria-labelledby="t-ghg" hidden>
-        <h4>Emissions inventory · 3 plants · FY 2025-26</h4>
+        <h2>Emissions inventory · 3 plants · FY 2025-26</h2>
         <p class="sub">Every figure traced to a meter reading, invoice or supplier entry.</p>
         <table class="calc">
           <tr><td>Scope 1 · diesel, LPG, furnace oil<span class="f">142 fuel entries across 3 sites</span></td><td>1,240 tCO₂e</td></tr>
@@ -596,15 +602,24 @@ footer a:hover{color:var(--band-fg)}
         <div><span class="num">20–30</span><span>The smallest system that would fix it, with a rough timeline</span></div>
       </div>
     </div>
-    <form class="book" id="bookForm" novalidate>
+    <form class="book" id="bookForm" name="WebToLeads4805054000017631043" accept-charset="UTF-8" novalidate>
+      <input type="hidden" name="xnQsjsdp" value="1aade6b3cf8605c22d9acb6ee15fe0c428d2691bb6cf81fb9b3d225fdc32db68">
+      <input type="hidden" name="zc_gad" id="zc_gad" value="">
+      <input type="hidden" name="xmIwtLD" value="3b79072affb4a67d4ba6bb28b81a6a3d0aa0725f4c8cad64a6070747b18b1cb86d26b59432bd3601ee65f8da8a548744">
+      <input type="hidden" name="actionType" value="TGVhZHM=">
+      <input type="hidden" name="returnURL" value="null">
+      <input type="hidden" name="LEADCF41" value="Zoho Consulting">
+      <input type="hidden" name="LEADCF121" id="landingUrl" value="https://climoz.com/">
+      <input type="hidden" name="LEADCF40" id="enquiryDetails" value="">
+      <input type="hidden" name="aG9uZXlwb3Q" value="" tabindex="-1" autocomplete="off">
       <div class="row2">
-        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
-        <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" autocomplete="organization" required></div>
+        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="Last Name" autocomplete="name" maxlength="80" required></div>
+        <div class="field"><label for="f-company">Company</label><input id="f-company" name="Company" autocomplete="organization" maxlength="200" required></div>
       </div>
       <div class="row2">
-        <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="f-email">Work email</label><input id="f-email" name="Email" type="email" autocomplete="email" maxlength="100" required></div>
         <div class="field"><label for="f-role">Your team</label>
-          <select id="f-role" name="role"><option>Sustainability / ESG</option><option>Procurement</option><option>Export / plant operations</option><option>Finance / company secretary</option><option>Carbon projects / climate finance</option><option>Other</option></select></div>
+          <select id="f-role"><option>Sustainability / ESG</option><option>Procurement</option><option>Export / plant operations</option><option>Finance / company secretary</option><option>Carbon projects / climate finance</option><option>Other</option></select></div>
       </div>
       <fieldset>
         <legend>What do you need first?</legend>
@@ -617,8 +632,9 @@ footer a:hover{color:var(--band-fg)}
           <label><input type="checkbox" id="o-unsure" name="need" value="Not sure"> Not sure yet</label>
         </div>
       </fieldset>
+      <div class="field"><label for="f-context">What is getting in the way today?</label><textarea id="f-context" placeholder="For example, our buyer needs product-level emissions data, but the source records sit across several teams." required></textarea></div>
       <button class="btn btn-primary" type="submit" style="justify-self:start">Request a time</button>
-      <p class="form-msg" id="formMsg" hidden>Design preview: on the live site this sends to Zoho CRM (Lead Source "Climoz") and opens Zoho Bookings.</p>
+      <p class="form-msg" id="formMsg" role="status" aria-live="polite" hidden></p>
       <p class="form-foot">We reply within one working day. Your details go only to the Climoz team.</p>
     </form>
   </div>
@@ -632,9 +648,9 @@ footer a:hover{color:var(--band-fg)}
       <p style="margin-top:14px;max-width:36ch">ESG and climate data systems for Indian exporters, suppliers and listed companies.</p>
       <p class="ngo">Working with NGO partners? <a href="https://www.edzola.com/" style="text-decoration:underline">EdZola builds programme systems for nonprofits →</a></p>
     </div>
-    <div><h4>Systems</h4><ul><li><a href="#systems">CBAM data systems</a></li><li><a href="#systems">Supplier ESG</a></li><li><a href="#systems">GHG calculators</a></li><li><a href="#book">BRSR data collection</a></li><li><a href="#book">Project MRV</a></li></ul></div>
-    <div><h4>Company</h4><ul><li><a href="#how">How we work</a></li><li><a href="#zoho">Built on Zoho</a></li><li><a href="#zoho">Trust &amp; security</a></li><li><a href="#insights">Insights</a></li><li><a href="#book">Contact</a></li></ul></div>
-    <div><h4>EdZola companies</h4><ul><li><a href="https://www.edzola.com/">EdZola</a></li><li><a href="#">ZolaShield</a></li><li><a href="#">Zolabs</a></li><li><a href="#">DozAI</a></li><li><a href="#">FundZola</a></li></ul></div>
+    <div><h3>Systems</h3><ul><li><a href="#systems">CBAM data systems</a></li><li><a href="#systems">Supplier ESG</a></li><li><a href="#systems">GHG calculators</a></li><li><a href="#book">BRSR data collection</a></li><li><a href="#book">Project MRV</a></li></ul></div>
+    <div><h3>Company</h3><ul><li><a href="#how">How we work</a></li><li><a href="#zoho">Built on Zoho</a></li><li><a href="#zoho">Trust &amp; security</a></li><li><a href="#insights">Insights</a></li><li><a href="#book">Contact</a></li></ul></div>
+    <div><h3>EdZola companies</h3><ul><li><a href="https://www.edzola.com/">EdZola</a></li><li><a href="#">ZolaShield</a></li><li><a href="#">Zolabs</a></li><li><a href="#">DozAI</a></li><li><a href="#">FundZola</a></li></ul></div>
     <div class="legal"><span>© 2026 Climoz, an EdZola company · Coimbatore, India</span><span><a href="#">Privacy</a> · <a href="#">Terms</a></span></div>
   </div>
 </footer>
@@ -656,7 +672,76 @@ footer a:hover{color:var(--band-fg)}
     });
   });
   var f=document.getElementById('bookForm');
-  f.addEventListener('submit',function(e){e.preventDefault();document.getElementById('formMsg').hidden=false;});
+  var msg=document.getElementById('formMsg');
+  var submit=f.querySelector('[type="submit"]');
+  var submitLabel=submit.textContent;
+  var landing=document.getElementById('landingUrl');
+  var details=document.getElementById('enquiryDetails');
+
+  function showMessage(text,isError){
+    msg.textContent=text;
+    msg.hidden=false;
+    msg.classList.toggle('error',!!isError);
+  }
+  function validEmail(value){
+    var at=value.indexOf('@'),dot=value.lastIndexOf('.');
+    return at>0&&dot>at+1&&dot+2<value.length;
+  }
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=f.elements['Last Name'];
+    var company=f.elements.Company;
+    var email=f.elements.Email;
+    var context=document.getElementById('f-context');
+    var required=[name,company,email,context];
+    for(var i=0;i<required.length;i++){
+      if(!required[i].value.trim()){
+        showMessage('Please complete all four fields before sending.',true);
+        required[i].focus();
+        return;
+      }
+    }
+    if(!validEmail(email.value.trim())){
+      showMessage('Please enter a valid work email address.',true);
+      email.focus();
+      return;
+    }
+    var needs=[].slice.call(f.querySelectorAll('input[name="need"]:checked')).map(function(input){return input.value});
+    landing.value=window.location.origin==='null'?'https://climoz.com/':window.location.origin+window.location.pathname;
+    details.value='Climoz enquiry\nTeam: '+document.getElementById('f-role').value+'\nNeed: '+(needs.length?needs.join(', '):'Not specified')+'\nChallenge: '+context.value.trim();
+    if(typeof _wfa_track!=='undefined'&&_wfa_track.wfa_submit)_wfa_track.wfa_submit(e);
+    submit.disabled=true;
+    submit.textContent='Sending…';
+    fetch('https://crm.zoho.com/crm/WebToLeadForm',{method:'POST',body:new FormData(f),cache:'no-cache'})
+      .then(function(response){var type=response.headers.get('Content-Type')||'';return type.indexOf('application/json')>-1?response.json():response.text()})
+      .then(function(data){
+        if(typeof data==='object'&&data.invalidCaptcha==='true')throw new Error(data.actionvalue||'Please complete the security check and try again.');
+        if(typeof data==='object'&&data.message&&data.actionsubmit==='error_msg')throw new Error(data.message);
+        f.reset();
+        showMessage('Thank you. Your note has been sent to the Climoz team.',false);
+        if(typeof _wfa_track!=='undefined'&&_wfa_track.wfa_post_submit)_wfa_track.wfa_post_submit(e);
+      })
+      .catch(function(error){showMessage(error.message||'We could not send the form just now. Please try again in a moment.',true)})
+      .finally(function(){submit.disabled=false;submit.textContent=submitLabel});
+  });
+
+  if(typeof _wfa_fstprtcken==='undefined')window._wfa_fstprtcken={};
+  window._wfa_fstprtcken[4805054000017631043]=true;
+  var originalWrite=document.write;
+  document.write=function(markup){
+    var value=String(markup).match(/elm\.value='([^']+)'/);
+    if(!value||f.elements.Zm9ybWZpbGxpbmd0aW1l)return;
+    var field=document.createElement('input');
+    field.type='hidden';
+    field.name='Zm9ybWZpbGxpbmd0aW1l';
+    field.value=value[1];
+    f.appendChild(field);
+  };
+  var servlet=document.createElement('script');
+  servlet.src='https://crm.zohopublic.com/crm/WebFormServlet?rid=63c762ec700c7fb69bc5e1275ffc37f7cf92cbf45748de086117a2cb5c386dec';
+  servlet.addEventListener('load',function(){document.write=originalWrite});
+  servlet.addEventListener('error',function(){document.write=originalWrite});
+  document.body.appendChild(servlet);
 })();
 </script>
 </body></html>
