@@ -1,308 +1,38 @@
 <!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Climoz | ESG &amp; climate data systems</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Climoz builds custom ESG and climate data systems for Indian exporters, suppliers and listed companies: CBAM, supplier ESG, GHG calculators, BRSR data and project MRV, built on Zoho.">
-<link rel="canonical" href="https://akshayedzola.github.io/climoz-site/">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Climoz | ESG and supplier data systems built on Zoho</title>
+<meta name="description" content="Climoz builds supplier evidence and ESG data systems on Zoho for CBAM, EcoVadis, carbon reduction plans and customer questionnaires. Live in weeks.">
+<link rel="canonical" href="https://climoz.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Climoz">
+<meta property="og:url" content="https://climoz.com/">
+<meta property="og:title" content="Climoz | ESG and supplier data systems built on Zoho">
+<meta property="og:description" content="Climoz builds supplier evidence and ESG data systems on Zoho for CBAM, EcoVadis, carbon reduction plans and customer questionnaires. Live in weeks.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<style>
-/* Layout concept: the homepage reads like a measurement worksheet. A ruled, gridded ground;
-   one live "worksheet" in the hero; sections are labelled like report schedules. */
-:root{
-  --ground:#F2F5F1;      /* cool field paper */
-  --sheet:#FFFFFF;       /* worksheet surface */
-  --ink:#0F2925;         /* deep spruce text */
-  --ink-2:#4A5F5A;       /* secondary text */
-  --rule:#D3DDD6;        /* grid + hairlines */
-  --leaf:#1F7A55;        /* accent: measured, verified */
-  --leaf-ink:#FFFFFF;    /* text on accent */
-  --leaf-soft:#DCEFE4;   /* accent wash */
-  --ochre:#B7791F;       /* data highlight: values, deadlines */
-  --ochre-soft:#F6EBD6;
-  --band:#0F2925;        /* dark band */
-  --band-fg:#E6EEE9;
-  --band-2:#9DB5AC;
-  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
-  --body:"IBM Plex Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
-  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-  --r:10px;
-  --wrap:1180px;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --ground:#0B1614; --sheet:#11201D; --ink:#E4ECE7; --ink-2:#9FB3AC; --rule:#22362F;
-    --leaf:#5CC08F; --leaf-ink:#06231A; --leaf-soft:#173A2C; --ochre:#E2AE4E; --ochre-soft:#3A2D14;
-    --band:#07100E; --band-fg:#E4ECE7; --band-2:#8FA79E; color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --ground:#0B1614; --sheet:#11201D; --ink:#E4ECE7; --ink-2:#9FB3AC; --rule:#22362F;
-  --leaf:#5CC08F; --leaf-ink:#06231A; --leaf-soft:#173A2C; --ochre:#E2AE4E; --ochre-soft:#3A2D14;
-  --band:#07100E; --band-fg:#E4ECE7; --band-2:#8FA79E; color-scheme:dark;
-}
-
-*{box-sizing:border-box}
-html{margin:0;min-width:0;overflow-x:hidden}
-body{
-  margin:0;min-width:0;overflow-x:hidden;
-  background:var(--ground); color:var(--ink);
-  font-family:var(--body); font-size:17px; line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--ground)}
-a{color:inherit}
-.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-@media (min-width:700px){.wrap{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
-h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-0.02em;line-height:1.08;text-wrap:balance;margin:0}
-h2{font-size:clamp(30px,4vw,46px)}
-h3{font-size:21px;letter-spacing:-0.01em;line-height:1.2}
-p{margin:0}
-.lede{font-size:19px;color:var(--ink-2);max-width:62ch}
-.label{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
-.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
-:focus-visible{outline:2px solid var(--leaf);outline-offset:3px;border-radius:4px}
-
-/* Buttons */
-.btn{display:inline-flex;align-items:center;gap:10px;font:600 16px/1 var(--body);text-decoration:none;
-  padding:15px 22px;border-radius:999px;border:1.5px solid transparent;cursor:pointer;transition:transform .15s ease, background .15s ease}
-.btn-primary{background:var(--leaf);color:var(--leaf-ink)}
-.btn-primary:hover{transform:translateY(-1px)}
-.btn-ghost{border-color:var(--ink);color:var(--ink);background:transparent}
-.btn-ghost:hover{background:var(--sheet)}
-.btn svg{width:16px;height:16px}
-
-/* Header */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--ground) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
-.top .wrap{display:flex;align-items:center;gap:24px;padding-block:14px}
-.brand{display:flex;align-items:baseline;gap:10px;text-decoration:none;flex-shrink:0}
-.brand b{font:800 26px/1 var(--display);letter-spacing:-0.03em}
-.brand b i{font-style:normal;color:var(--leaf)}
-.brand small{font:500 12px/1 var(--mono);color:var(--ink-2);letter-spacing:.02em}
-.nav{display:flex;gap:22px;margin-left:auto;font-size:15px}
-.nav a{text-decoration:none;color:var(--ink-2)}
-.nav a:hover{color:var(--ink)}
-.top .btn{padding:11px 16px;font-size:14.5px}
-@media (max-width:980px){.nav{display:none}.top .btn{margin-left:auto}}
-@media (max-width:520px){.brand small{display:none}.top .btn span.long{display:none}.top .wrap{gap:12px}.top .btn{padding:10px 13px}}
-
-/* Hero */
-.hero{position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
-  background-image:linear-gradient(var(--rule) 1px,transparent 1px),linear-gradient(90deg,var(--rule) 1px,transparent 1px);
-  background-size:28px 28px;opacity:.45;mask-image:linear-gradient(180deg,#000 0%,transparent 85%);-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 85%)}
-.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-block:72px 64px}
-.hero .wrap>*{min-width:0}
-@media (max-width:980px){.hero .wrap{grid-template-columns:1fr;gap:40px;padding-block:44px 48px}}
-.hero h1{font-size:clamp(40px,5.6vw,72px);font-weight:800;letter-spacing:-0.035em;line-height:1.0}
-.hero h1 em{font-style:normal;color:var(--leaf)}
-.hero .lede{margin-top:22px}
-.hero .second{margin-top:14px;font-family:var(--mono);font-size:14px;color:var(--ochre)}
-.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.hero-meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:28px;font-size:14px;color:var(--ink-2)}
-.hero-meta span{display:inline-flex;align-items:center;gap:8px}
-.hero-meta span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--leaf)}
-
-/* Worksheet */
-.sheet{background:var(--sheet);border:1px solid var(--rule);border-radius:14px;box-shadow:0 1px 0 var(--rule),0 24px 48px -28px rgba(15,41,37,.35);min-width:0}
-.sheet-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--rule)}
-.sheet-head .label{font-size:11.5px}
-.tag-ex{font:500 11px/1 var(--mono);color:var(--ochre);background:var(--ochre-soft);padding:5px 8px;border-radius:4px;letter-spacing:.04em;white-space:nowrap}
-.tabs{display:flex;gap:4px;padding:10px 12px 0;border-bottom:1px solid var(--rule);overflow-x:auto}
-.tab{font:500 14px/1 var(--body);color:var(--ink-2);background:none;border:0;border-bottom:2px solid transparent;padding:10px 10px 12px;cursor:pointer;white-space:nowrap}
-.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--leaf)}
-.panel{padding:18px}
-.panel h2{margin:0 0 4px;font:600 19px/1.3 var(--body);letter-spacing:0}
-.panel .sub{font-size:13.5px;color:var(--ink-2);margin-bottom:14px}
-.calc{width:100%;border-collapse:collapse;font-size:14px}
-.calc td{padding:9px 0;border-bottom:1px dashed var(--rule);vertical-align:top}
-.calc td:last-child{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;padding-left:12px}
-.calc .f{display:block;font-family:var(--mono);font-size:12px;color:var(--ink-2)}
-.calc tr.total td{border-bottom:0;border-top:1.5px solid var(--ink);padding-top:12px;font-weight:600}
-.calc tr.total td:last-child{color:var(--leaf);font-size:16px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.chip{font:500 12.5px/1 var(--body);padding:7px 10px;border-radius:999px;background:var(--leaf-soft);color:var(--ink)}
-.chip.warn{background:var(--ochre-soft)}
-.tier{font:500 12px/1 var(--mono);padding:4px 7px;border-radius:4px}
-.tier.low{background:var(--leaf-soft)} .tier.med{background:var(--ochre-soft)} .tier.high{background:var(--ink);color:var(--ground)}
-
-/* Sections */
-section{padding-block:88px}
-@media (max-width:700px){section{padding-block:60px}}
-.sec-head{display:grid;gap:16px;margin-bottom:44px;max-width:780px}
-.sec-head .label{color:var(--leaf)}
-
-/* Why now */
-.why{background:var(--sheet);border-block:1px solid var(--rule);padding-block:0}
-.why .wrap{display:grid;grid-template-columns:repeat(3,1fr)}
-.why-item{padding:30px 28px 28px 0;display:grid;gap:8px;align-content:start;min-width:0}
-.why-item + .why-item{padding-left:28px;border-left:1px solid var(--rule)}
-.why-item .date{font:500 13px/1 var(--mono);color:var(--ochre);letter-spacing:.02em}
-.why-item h3{font-size:19px}
-.why-item p{font-size:15px;color:var(--ink-2)}
-.why-note{grid-column:1/-1;border-top:1px solid var(--rule);padding:12px 0;font:400 12px/1.5 var(--mono);color:var(--ink-2)}
-@media (max-width:860px){.why .wrap{grid-template-columns:1fr}.why-item,.why-item + .why-item{padding:24px 0;border-left:0}.why-item + .why-item{border-top:1px solid var(--rule)}}
-
-/* Problem */
-.pains{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1.5px solid var(--ink)}
-.pain{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:26px 24px 26px 0;border-bottom:1px solid var(--rule);min-width:0}
-.pain:nth-child(even){padding-left:24px;border-left:1px solid var(--rule)}
-.pain .cell{font:500 13px/1.4 var(--mono);color:var(--ochre);padding-top:3px;white-space:nowrap}
-.pain p{font-size:17px}
-.pain p span{display:block;color:var(--ink-2);font-size:15px;margin-top:6px}
-@media (max-width:760px){.pains{grid-template-columns:1fr}.pain,.pain:nth-child(even){padding:22px 0;border-left:0}}
-.pain-close{margin-top:28px;font-size:19px;max-width:60ch}
-.pain-close strong{color:var(--leaf)}
-
-/* Systems */
-.systems{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
-.sys{grid-column:span 2;background:var(--sheet);border:1px solid var(--rule);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:14px;min-width:0}
-.sys.wide{grid-column:span 3}
-.sys .code{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.sys .code .label{font-size:11.5px}
-.sys .urgent{font:500 11px/1 var(--mono);color:var(--ochre);letter-spacing:.04em;text-transform:uppercase}
-.sys p{font-size:15.5px;color:var(--ink-2)}
-.sys ul{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:14.5px}
-.sys li{display:grid;grid-template-columns:14px 1fr;gap:8px}
-.sys li::before{content:"";width:8px;height:8px;margin-top:8px;border:1.5px solid var(--leaf);border-radius:2px}
-.sys .out{margin-top:auto;padding-top:14px;border-top:1px dashed var(--rule);font:400 13px/1.5 var(--mono);color:var(--ink-2)}
-.sys .out b{color:var(--ink);font-weight:500}
-.sys a.more{font-weight:600;font-size:15px;text-decoration:none;color:var(--leaf)}
-.sys a.more:hover{text-decoration:underline}
-@media (max-width:980px){.systems{grid-template-columns:repeat(2,1fr)}.sys,.sys.wide{grid-column:span 1}.sys:last-child{grid-column:1/-1}}
-@media (max-width:620px){.systems{grid-template-columns:1fr}.sys:last-child{grid-column:auto}}
-
-/* Who */
-.who{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--rule);border-radius:var(--r);background:var(--sheet);overflow:hidden}
-.who a{padding:22px 20px;text-decoration:none;display:grid;gap:8px;align-content:start;border-right:1px solid var(--rule);min-width:0;transition:background .15s}
-.who a:last-child{border-right:0}
-.who a:hover{background:var(--leaf-soft)}
-.who b{font:600 16px/1.3 var(--body)}
-.who span{font-size:14px;color:var(--ink-2)}
-.who i{font-style:normal;font:500 12.5px/1 var(--mono);color:var(--leaf);margin-top:6px}
-@media (max-width:980px){.who{grid-template-columns:1fr 1fr}.who a{border-bottom:1px solid var(--rule)}.who a:nth-child(2n){border-right:0}.who a:last-child{grid-column:1/-1;border-bottom:0}}
-@media (max-width:560px){.who{grid-template-columns:1fr}.who a{border-right:0}}
-
-/* How we work (dark band) */
-.band{background:var(--band);color:var(--band-fg)}
-.band .label{color:var(--band-2)}
-.band .lede{color:var(--band-2)}
-.band .sec-head .label{color:var(--band-2)}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s}
-.step{padding:0 24px 0 0;display:grid;gap:10px;align-content:start;min-width:0}
-.step + .step{padding-left:24px;border-left:1px solid color-mix(in srgb,var(--band-fg) 18%,transparent)}
-.step .n{font:500 13px/1 var(--mono);color:var(--band-2)}
-.step .dur{font:700 30px/1 var(--display);letter-spacing:-0.02em;color:var(--band-fg)}
-.step h3{font-size:19px;color:var(--band-fg)}
-.step p{font-size:15px;color:var(--band-2)}
-.track{height:4px;border-radius:2px;background:color-mix(in srgb,var(--band-fg) 14%,transparent);margin:6px 0 4px;position:relative}
-.track i{position:absolute;inset:0 auto 0 0;border-radius:2px;background:var(--leaf)}
-@media (max-width:900px){.steps{grid-template-columns:1fr 1fr;row-gap:36px}.step:nth-child(3){padding-left:0;border-left:0}}
-@media (max-width:560px){.steps{grid-template-columns:1fr}.step,.step + .step{padding:0;border-left:0}}
-.partner-note{margin-top:48px;padding-top:24px;border-top:1px solid color-mix(in srgb,var(--band-fg) 18%,transparent);display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between;align-items:baseline}
-.partner-note p{font-size:18px;max-width:60ch}
-.partner-note a{color:var(--band-fg);font-weight:600}
-
-/* Compare */
-.tbl-wrap{overflow-x:auto;border:1px solid var(--rule);border-radius:var(--r);background:var(--sheet)}
-table.cmp{border-collapse:collapse;width:100%;min-width:760px;font-size:15px}
-.cmp th,.cmp td{padding:16px 18px;text-align:left;border-bottom:1px solid var(--rule);vertical-align:top}
-.cmp thead th{font:500 12.5px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);background:var(--ground)}
-.cmp thead th.us{color:var(--leaf-ink);background:var(--leaf)}
-.cmp td.us{background:var(--leaf-soft);font-weight:500}
-.cmp tbody th{font-weight:600;width:22%}
-.cmp tr:last-child th,.cmp tr:last-child td{border-bottom:0}
-.cmp .m{color:var(--ink-2)}
-
-/* Zoho + trust */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-@media (max-width:900px){.split{grid-template-columns:1fr;gap:40px}}
-.stack{display:grid;gap:12px;margin-top:28px}
-.stack div{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--rule)}
-.stack div b{font:600 15px/1.4 var(--body)}
-.stack div span{font-size:15px;color:var(--ink-2)}
-@media (max-width:520px){.stack div{grid-template-columns:1fr;gap:4px}}
-.trust{background:var(--sheet);border:1px solid var(--rule);border-radius:var(--r);padding:28px;display:grid;gap:18px}
-.trust h3{font-size:22px}
-.trust ul{margin:0;padding:0;list-style:none;display:grid;gap:14px}
-.trust li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15.5px}
-.trust li svg{width:18px;height:18px;margin-top:3px;color:var(--leaf)}
-.trust li b{display:block}
-.trust li span{color:var(--ink-2)}
-.trust .never{margin-top:4px;padding:14px 16px;border-radius:8px;background:var(--ochre-soft);font-size:15px}
-
-/* Roots */
-.roots .wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:center}
-@media (max-width:900px){.roots .wrap{grid-template-columns:1fr;gap:32px}}
-.figs{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1.5px solid var(--ink)}
-.fig{padding:22px 0;border-bottom:1px solid var(--rule);display:grid;gap:4px}
-.fig:nth-child(even){padding-left:24px;border-left:1px solid var(--rule)}
-.fig b{font:800 clamp(34px,4vw,48px)/1 var(--display);letter-spacing:-0.03em}
-.fig span{font-size:14.5px;color:var(--ink-2)}
-
-/* Insights */
-.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-@media (max-width:900px){.posts{grid-template-columns:1fr}}
-.post{display:grid;gap:12px;align-content:start;padding:22px 0;border-top:1.5px solid var(--ink);text-decoration:none;min-width:0}
-.post h3{font-size:20px}
-.post p{font-size:15px;color:var(--ink-2)}
-.post .label{font-size:11.5px}
-.post:hover h3{color:var(--leaf)}
-
-/* Final CTA */
-.final .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-@media (max-width:900px){.final .wrap{grid-template-columns:1fr;gap:36px}}
-.agenda{margin-top:24px;display:grid;gap:0;border-top:1px solid var(--rule)}
-.agenda div{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:15.5px}
-.agenda .num{color:var(--ochre);font-size:13.5px;padding-top:2px}
-form.book{background:var(--sheet);border:1px solid var(--rule);border-radius:14px;padding:28px;display:grid;gap:16px}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media (max-width:520px){.row2{grid-template-columns:1fr}}
-.field{display:grid;gap:6px;min-width:0}
-.field label{font:500 13.5px/1.2 var(--body)}
-.field input,.field select,.field textarea{font:400 16px/1.3 var(--body);color:var(--ink);background:var(--ground);border:1px solid var(--rule);border-radius:8px;padding:12px 12px;width:100%}
-.field textarea{min-height:112px;resize:vertical}
-.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--leaf);outline-offset:0;border-color:transparent}
-fieldset{border:0;padding:0;margin:0;display:grid;gap:8px}
-legend{font:500 13.5px/1.2 var(--body);margin-bottom:8px}
-.opts{display:flex;flex-wrap:wrap;gap:8px}
-.opts label{display:inline-flex;align-items:center;gap:6px;font-size:14px;padding:8px 12px;border:1px solid var(--rule);border-radius:999px;cursor:pointer;background:var(--ground)}
-.opts input{accent-color:var(--leaf);margin:0}
-.opts label:has(input:checked){border-color:var(--leaf);background:var(--leaf-soft)}
-.form-foot{font-size:13px;color:var(--ink-2)}
-.form-msg{font-size:14.5px;padding:12px 14px;border-radius:8px;background:var(--leaf-soft)}
-.form-msg.error{background:var(--ochre-soft);color:var(--ink)}
-
-/* Footer */
-footer{background:var(--band);color:var(--band-2);padding-block:56px 40px;font-size:14.5px}
-footer .wrap{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:36px}
-@media (max-width:860px){footer .wrap{grid-template-columns:1fr 1fr}}
-@media (max-width:520px){footer .wrap{grid-template-columns:1fr}}
-footer .brand b{color:var(--band-fg)}
-footer .brand small{color:var(--band-2);display:inline}
-footer h3{margin:0 0 12px;font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--band-fg)}
-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-footer a{text-decoration:none}
-footer a:hover{color:var(--band-fg)}
-.ngo{margin-top:18px;padding:14px 16px;border:1px solid color-mix(in srgb,var(--band-fg) 18%,transparent);border-radius:8px;color:var(--band-fg)}
-.legal{grid-column:1/-1;border-top:1px solid color-mix(in srgb,var(--band-fg) 14%,transparent);padding-top:20px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:13px}
-
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
-</style>
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"https://climoz.com/#org","name":"Climoz","url":"https://climoz.com/","logo":"https://climoz.com/favicon.svg","description":"ESG and supplier data systems built on Zoho.","parentOrganization":{"@type":"Organization","name":"EdZola","url":"https://www.edzola.com/"},"address":{"@type":"PostalAddress","addressLocality":"Coimbatore","addressCountry":"IN"}},
+{"@type":"WebSite","@id":"https://climoz.com/#website","name":"Climoz","url":"https://climoz.com/","publisher":{"@id":"https://climoz.com/#org"},"inLanguage":"en-GB"}
+]}
+</script>
+<script src="/assets/consent.js" defer></script>
 </head><body>
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Climoz home"><b>clim<i>o</i>z</b><small>an EdZola company</small></a>
+    <a class="brand" href="/" aria-label="Climoz home"><b>clim<i>o</i>z</b><small>an EdZola company</small></a>
     <nav class="nav" aria-label="Main">
-      <a href="#systems">Systems</a>
-      <a href="#who">Who it's for</a>
-      <a href="#how">How we work</a>
-      <a href="#zoho">Built on Zoho</a>
-      <a href="#insights">Insights</a>
+      <a href="/#systems">Systems</a>
+      <a href="/#who">Who it's for</a>
+      <a href="/how-we-work/">How we work</a>
+      <a href="/built-on-zoho/">Built on Zoho</a>
+      <a href="/insights/">Insights</a>
     </nav>
-    <a class="btn btn-primary" href="#book">Book a <span class="long">30-minute </span>review</a>
+    <a class="btn btn-primary" href="/#book">Book a <span class="long">30-minute </span>review</a>
   </div>
 </header>
 
@@ -311,14 +41,13 @@ footer a:hover{color:var(--band-fg)}
 <div class="hero">
   <div class="wrap">
     <div>
-      <p class="label" style="margin-bottom:18px">ESG &amp; climate data systems for Indian companies</p>
-      <h1>From emissions data to disclosure, <em>without the spreadsheets.</em></h1>
-      <p class="lede">Climoz builds custom ESG and climate data systems for exporters, suppliers and listed companies. CBAM, supplier ESG, GHG inventories, BRSR and project MRV, built on Zoho in weeks, in a stack you own.</p>
-      <p class="second">Net zero starts with numbers you can trust.</p>
+      <p class="label" style="margin-bottom:18px">ESG and supplier data systems, built on Zoho</p>
+      <h1>Answer every customer, rating and regulator <em>from one set of evidence.</em></h1>
+      <p class="lede">Every request wants the same evidence in a different format. Climoz builds the one system that holds it, on Zoho, in an account you own, so the next questionnaire starts from data you already have.</p>
       <div class="ctas">
-        <a class="btn btn-primary" href="#book">Book a 30-minute ESG data review
+        <a class="btn btn-primary" href="#book">Book a 30-minute data review
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-        <a class="btn btn-ghost" href="#systems">See the five systems</a>
+        <a class="btn btn-ghost" href="#systems">See what we build</a>
       </div>
       <div class="hero-meta">
         <span>150+ systems built by EdZola</span>
@@ -333,14 +62,26 @@ footer a:hover{color:var(--band-fg)}
         <span class="tag-ex">EXAMPLE FIGURES</span>
       </div>
       <div class="tabs" role="tablist" aria-label="Example systems">
-        <button class="tab" role="tab" id="t-cbam" aria-selected="true" aria-controls="p-cbam">CBAM pack</button>
-        <button class="tab" role="tab" id="t-sup" aria-selected="false" aria-controls="p-sup" tabindex="-1">Supplier ESG</button>
-        <button class="tab" role="tab" id="t-ghg" aria-selected="false" aria-controls="p-ghg" tabindex="-1">GHG inventory</button>
+        <button class="tab" role="tab" id="t-ev" aria-selected="true" aria-controls="p-ev">Supplier evidence</button>
+        <button class="tab" role="tab" id="t-cbam" aria-selected="false" aria-controls="p-cbam" tabindex="-1">CBAM pack</button>
+        <button class="tab" role="tab" id="t-crp" aria-selected="false" aria-controls="p-crp" tabindex="-1">Carbon reduction plan</button>
       </div>
 
-      <div class="panel" role="tabpanel" id="p-cbam" aria-labelledby="t-cbam">
+      <div class="panel" role="tabpanel" id="p-ev" aria-labelledby="t-ev">
+        <h2>EcoVadis reassessment due 14 March</h2>
+        <p class="sub">One evidence library, each item with an owner and a renewal date.</p>
+        <table class="calc">
+          <tr><td>Evidence items current<span class="f">policies, certificates, KPIs, procedures</span></td><td>31 of 38</td></tr>
+          <tr><td>Certificates expiring in 60 days<span class="f">ISO 14001, fire safety, 2 supplier audits</span></td><td>4</td></tr>
+          <tr><td>Also mapped to<span class="f">Sedex SAQ + 3 customer questionnaires</span></td><td>4 requests</td></tr>
+          <tr class="total"><td>Export</td><td>Pack per request</td></tr>
+        </table>
+        <div class="chips"><span class="chip warn">7 items need an owner's update</span><span class="chip">Answers reuse last cycle's evidence</span></div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-cbam" aria-labelledby="t-cbam" hidden>
         <h2>Hot-rolled coil, CN 7208 · shipment to an EU buyer</h2>
-        <p class="sub">Embedded emissions per tonne, from your plant data instead of EU default values.</p>
+        <p class="sub">Embedded emissions per tonne, from your plant data instead of default values.</p>
         <table class="calc">
           <tr><td>Direct emissions, installation<span class="f">fuel + process records, Q2</span></td><td>1.71 tCO₂e/t</td></tr>
           <tr><td>Indirect emissions, electricity<span class="f">0.42 MWh/t × 0.716 tCO₂/MWh grid factor</span></td><td>0.30 tCO₂e/t</td></tr>
@@ -350,52 +91,51 @@ footer a:hover{color:var(--band-fg)}
         <div class="chips"><span class="chip warn">Supplier data: 11 of 14 received</span><span class="chip">Verifier pack ready to export</span></div>
       </div>
 
-      <div class="panel" role="tabpanel" id="p-sup" aria-labelledby="t-sup" hidden>
-        <h2>Packaging suppliers · FY 2026-27 onboarding</h2>
-        <p class="sub">Self-assessment, documents and risk tier in one record per supplier.</p>
+      <div class="panel" role="tabpanel" id="p-crp" aria-labelledby="t-crp" hidden>
+        <h2>Carbon reduction plan · UK tender · FY 2025</h2>
+        <p class="sub">Inventory, baseline and reduction measures in the format bid teams need.</p>
         <table class="calc">
-          <tr><td>Sri Murugan Corrugators<span class="f">questionnaire 100% · code of conduct signed</span></td><td>78 <span class="tier low">LOW</span></td></tr>
-          <tr><td>Kovai Poly Films<span class="f">questionnaire 85% · effluent consent pending</span></td><td>61 <span class="tier med">MED</span></td></tr>
-          <tr><td>Deccan Print &amp; Pack<span class="f">questionnaire 40% · no energy data</span></td><td>34 <span class="tier high">HIGH</span></td></tr>
-          <tr class="total"><td>ESG weight in next RFP score</td><td>20%</td></tr>
+          <tr><td>Scope 1 · gas, fleet diesel<span class="f">96 fuel and mileage entries, 2 sites</span></td><td>412 tCO₂e</td></tr>
+          <tr><td>Scope 2 · electricity, location-based<span class="f">1,380 MWh × UK grid factor for the year</span></td><td>286 tCO₂e</td></tr>
+          <tr><td>Scope 3 · reported categories<span class="f">travel, commuting, waste, transport</span></td><td>734 tCO₂e</td></tr>
+          <tr class="total"><td>Total vs 2022 baseline</td><td>1,432 tCO₂e · −11%</td></tr>
         </table>
-        <div class="chips"><span class="chip">38 of 52 suppliers complete</span><span class="chip warn">6 reminders due Monday</span></div>
-      </div>
-
-      <div class="panel" role="tabpanel" id="p-ghg" aria-labelledby="t-ghg" hidden>
-        <h2>Emissions inventory · 3 plants · FY 2025-26</h2>
-        <p class="sub">Every figure traced to a meter reading, invoice or supplier entry.</p>
-        <table class="calc">
-          <tr><td>Scope 1 · diesel, LPG, furnace oil<span class="f">142 fuel entries across 3 sites</span></td><td>1,240 tCO₂e</td></tr>
-          <tr><td>Scope 2 · grid electricity<span class="f">5,560 MWh × 0.716 tCO₂/MWh</span></td><td>3,981 tCO₂e</td></tr>
-          <tr><td>Scope 3 · purchased goods (screening)<span class="f">spend-based, top 20 suppliers</span></td><td>9,100 tCO₂e</td></tr>
-          <tr class="total"><td>Total, with audit trail</td><td>14,321 tCO₂e</td></tr>
-        </table>
-        <div class="chips"><span class="chip">Factors versioned by year</span><span class="chip">Ready for BRSR Principle 6</span></div>
+        <div class="chips"><span class="chip">Factors versioned by year</span><span class="chip warn">Board sign-off due before bid</span></div>
       </div>
     </div>
   </div>
 </div>
 
 <!-- WHY NOW -->
-<section class="why" aria-label="Why now">
-  <div class="wrap">
+<section class="why" aria-labelledby="why-h">
+  <div class="wrap five">
+    <p class="why-head label" id="why-h">What's landing on desks</p>
     <div class="why-item">
       <span class="date">SINCE 1 JAN 2026</span>
       <h3>EU CBAM is in its definitive phase</h3>
-      <p>Steel, aluminium, cement and fertiliser buyers in the EU now need verified embedded-emissions data. The first annual declaration for 2026 imports is due 30 September 2027.</p>
+      <p>The first annual declaration for 2026 imports is due 30 September 2027.</p>
     </div>
     <div class="why-item">
-      <span class="date">FY 2026-27</span>
-      <h3>BRSR Core reaches the top 1,000</h3>
-      <p>Listed companies need independent assessment or assurance of BRSR Core figures, and many are asking their suppliers for data to back them up.</p>
+      <span class="date">1 JAN 2027</span>
+      <h3>UK CBAM starts</h3>
+      <p>Importers will need embedded-emissions data from overseas producers.</p>
     </div>
     <div class="why-item">
-      <span class="date">FY 2025-26 ONWARDS</span>
-      <h3>India's carbon market is live</h3>
-      <p>Around 490 entities have intensity targets under the Carbon Credit Trading Scheme. Offset projects need baseline and monitoring data that holds up.</p>
+      <span class="date">BY 5 DEC 2027</span>
+      <h3>ESOS Phase 4 notifications</h3>
+      <p>Compliance notifications are due for qualifying UK organisations.</p>
     </div>
-    <p class="why-note">Regulatory dates as of October 2026. Climoz builds the data system; your consultant and verifier sign off.</p>
+    <div class="why-item">
+      <span class="date">NOW</span>
+      <h3>Carbon reduction plans in UK tenders</h3>
+      <p>Public buyers ask for a plan under PPN 006, which replaced PPN 06/21.</p>
+    </div>
+    <div class="why-item">
+      <span class="date">PHASING IN</span>
+      <h3>Australia's climate reporting</h3>
+      <p>Mandatory climate-related disclosures under AASB S2, by entity size.</p>
+    </div>
+    <p class="why-note">Dates as of November 2026. Climoz builds the data system. Your consultant and verifier sign off. Working in India? <a href="/india/">BRSR Core and CCTS are on our India page</a>.</p>
   </div>
 </section>
 
@@ -407,12 +147,13 @@ footer a:hover{color:var(--band-fg)}
       <h2>Sound familiar?</h2>
     </div>
     <div class="pains">
+      <div class="pain"><span class="cell">EcoVadis_evidence_FINAL(2).zip</span><p>The reassessment is next month.<span>Half the certificates in last year's upload have expired and nobody owns the renewals.</span></p></div>
       <div class="pain"><span class="cell">Sheet1!B14</span><p>Your EU buyer wants embedded emissions per product, and the number lives in one engineer's spreadsheet.<span>Nobody else can rebuild it if they leave.</span></p></div>
       <div class="pain"><span class="cell">Suppliers_v7.xlsx</span><p>Forty suppliers sent forty different formats.<span>Half the questionnaires are incomplete and nobody knows which.</span></p></div>
       <div class="pain"><span class="cell">EF_2019 (copy)</span><p>The emission factors were pasted in years ago.<span>Your totals are probably wrong, and default values are probably costing you.</span></p></div>
       <div class="pain"><span class="cell">=SUM(#REF!)</span><p>The assessor asks where a figure came from.<span>Three people spend a week finding out.</span></p></div>
     </div>
-    <p class="pain-close">Your disclosures deserve better than a spreadsheet. <strong>Climoz turns these workflows into one connected system</strong> your plant, procurement and sustainability teams can all use.</p>
+    <p class="pain-close">Your answers deserve better than a shared drive. <strong>Climoz turns this into one system</strong> your sustainability, procurement, plant and bid teams all use.</p>
   </div>
 </section>
 
@@ -420,52 +161,45 @@ footer a:hover{color:var(--band-fg)}
 <section id="systems" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head">
-      <p class="label">Five systems</p>
-      <h2>Start with the system your buyers or regulators are asking about.</h2>
-      <p class="lede">Each one starts from a template we've already built, then bends to your plants, products and suppliers.</p>
+      <p class="label">What we build</p>
+      <h2>Start with the request that's on your desk.</h2>
+      <p class="lede">Each one starts from a template we've built, then bends to your sites, products and suppliers.</p>
     </div>
     <div class="systems">
       <article class="sys wide">
-        <div class="code"><span class="label">01 · For exporters</span><span class="urgent">Deadlines in 2027</span></div>
-        <h3>CBAM data systems for exporters</h3>
-        <p>Calculate embedded emissions from your own plant data and hand EU buyers numbers a verifier can check.</p>
-        <ul><li>Plant and process records by installation</li><li>Supplier emissions intake for precursors</li><li>Embedded-emissions calculator per CN code</li></ul>
-        <p class="out"><b>Output:</b> verifier-ready CBAM data pack per buyer</p>
-        <a class="more" href="#systems">CBAM data systems →</a>
+        <div class="code"><span class="label">01 · For suppliers</span></div>
+        <h3>Supplier evidence</h3>
+        <p>EcoVadis, Sedex, customer questionnaires and modern slavery requests from one evidence library, with owners and expiry dates, mapped to each scheme's questions.</p>
+        <ul><li>Evidence library with owners and renewal dates</li><li>Each item mapped to the questions it answers</li><li>Expiry alerts before the next assessment</li></ul>
+        <p class="out"><b>Output:</b> answers you can reuse, with the document behind each one</p>
+        <a class="more" href="/supplier-evidence/">Supplier evidence →</a>
       </article>
       <article class="sys wide">
-        <div class="code"><span class="label">02 · For procurement teams</span></div>
-        <h3>Supplier ESG &amp; sustainable procurement</h3>
-        <p>One portal where suppliers complete questionnaires, upload documents and get a risk tier your buyers can use in RFPs.</p>
-        <ul><li>Questionnaires suppliers can finish on a phone</li><li>Code-of-conduct sign-off and document expiry alerts</li><li>Scoring that feeds your RFP evaluation</li></ul>
-        <p class="out"><b>Output:</b> supplier risk tiers + value-chain data for BRSR</p>
-        <a class="more" href="#systems">Supplier ESG portal →</a>
+        <div class="code"><span class="label">02 · For procurement</span></div>
+        <h3>Supplier data portals</h3>
+        <p>Questionnaires suppliers can finish on a phone, code-of-conduct sign-off, expiry alerts and risk tiers.</p>
+        <ul><li>Your own questions, with branching and file uploads</li><li>Code-of-conduct sign-off and document expiry alerts</li><li>Risk tiers that feed sourcing decisions</li></ul>
+        <p class="out"><b>Output:</b> supplier scores and value-chain data your reporting team can use</p>
+        <a class="more" href="/supplier-portal/">Supplier data portals →</a>
       </article>
-      <article class="sys">
-        <div class="code"><span class="label">03 · For mid-size companies</span></div>
-        <h3>GHG calculators &amp; emissions inventory</h3>
-        <p>Scope 1 and 2, plus a practical start on Scope 3, using Indian emission factors.</p>
-        <ul><li>Multi-site entry with audit trail</li><li>Factors versioned by year</li></ul>
-        <p class="out"><b>Output:</b> inventory + dashboards for customers</p>
-        <a class="more" href="#systems">GHG calculators →</a>
+      <article class="sys wide">
+        <div class="code"><span class="label">03 · For importers and their producers</span><span class="urgent">EU now · UK 2027</span></div>
+        <h3>CBAM data systems, EU and UK</h3>
+        <p>Plant records, precursor intake from suppliers and embedded emissions per CN code.</p>
+        <ul><li>Plant and process records by installation</li><li>Supplier emissions intake for precursors</li><li>Embedded-emissions calculator per CN code</li></ul>
+        <p class="out"><b>Output:</b> a verifier-ready pack per buyer</p>
+        <a class="more" href="/cbam/">CBAM data systems →</a>
       </article>
-      <article class="sys">
-        <div class="code"><span class="label">04 · For listed companies</span></div>
-        <h3>BRSR data collection</h3>
-        <p>Named owners, evidence uploads and review steps across every site, ready for your assessor.</p>
-        <ul><li>BRSR Core KPIs by site</li><li>Optional value-chain partner intake</li></ul>
-        <p class="out"><b>Output:</b> assessor-ready exports</p>
-        <a class="more" href="#book">BRSR data collection →</a>
-      </article>
-      <article class="sys">
-        <div class="code"><span class="label">05 · For project developers</span></div>
-        <h3>Carbon &amp; nature project MRV</h3>
-        <p>From registry and baseline to field monitoring and a verification pack.</p>
-        <ul><li>Offline field app with GPS and voice notes</li><li>Satellite and drone data imports</li></ul>
-        <p class="out"><b>Output:</b> CCTS or voluntary-registry formats</p>
-        <a class="more" href="#book">Project MRV →</a>
+      <article class="sys wide">
+        <div class="code"><span class="label">04 · For bid and sustainability teams</span></div>
+        <h3>GHG inventory and carbon reduction plans</h3>
+        <p>Scope 1 and 2 and a practical start on Scope 3, with factors versioned by year.</p>
+        <ul><li>Multi-site entry with an audit trail</li><li>Factors versioned by year</li><li>Baseline and year-on-year tracking</li></ul>
+        <p class="out"><b>Output:</b> inventory, SECR figures and a PPN 006 carbon reduction plan</p>
+        <a class="more" href="/carbon-reduction-plan/">Carbon reduction plans →</a>
       </article>
     </div>
+    <p class="sys-more">Working in India? BRSR, CCTS and project MRV have their own page. <a href="/india/">Climoz in India →</a></p>
   </div>
 </section>
 
@@ -477,11 +211,12 @@ footer a:hover{color:var(--band-fg)}
       <h2>Pick the line that sounds like you.</h2>
     </div>
     <div class="who">
-      <a href="#systems"><b>We export steel, aluminium, cement or fertiliser</b><span>An EU buyer has asked for emissions data.</span><i>→ CBAM</i></a>
-      <a href="#systems"><b>We run procurement at a listed company</b><span>We need supplier ESG data we can score.</span><i>→ Supplier ESG</i></a>
-      <a href="#systems"><b>We supply listed companies</b><span>Customers keep sending us emissions questionnaires.</span><i>→ GHG calculator</i></a>
-      <a href="#book"><b>We develop or fund carbon projects</b><span>We need monitoring data a verifier will accept.</span><i>→ Project MRV</i></a>
-      <a href="https://www.edzola.com/csr/"><b>Our CSR team now reports into ESG</b><span>We need programme data that holds up.</span><i>→ EdZola for CSR</i></a>
+      <a href="/supplier-evidence/"><b>Our customers keep sending EcoVadis, Sedex and sustainability questionnaires.</b><i>→ Supplier evidence</i></a>
+      <a href="/carbon-reduction-plan/"><b>We bid for UK public contracts and need a carbon reduction plan.</b><i>→ Carbon reduction plans</i></a>
+      <a href="/cbam/"><b>We import into the EU or UK, or we supply someone who does.</b><i>→ CBAM</i></a>
+      <a href="/supplier-portal/"><b>We run procurement and need supplier ESG data we can score.</b><i>→ Supplier portals</i></a>
+      <a href="/india/"><b>We're an Indian exporter or listed company.</b><i>→ India</i></a>
+      <a href="https://www.edzola.com/csr/"><b>Our CSR team now reports into ESG.</b><i>→ EdZola for CSR</i></a>
     </div>
   </div>
 </section>
@@ -495,14 +230,14 @@ footer a:hover{color:var(--band-fg)}
       <p class="lede">We don't start from zero, and we don't leave until your team is using it.</p>
     </div>
     <div class="steps">
-      <div class="step"><span class="n">Step 1</span><span class="dur">30 min</span><div class="track"><i style="width:4%"></i></div><h3>ESG data review</h3><p>We look at what your buyers or regulators are asking for and where your data lives today. You leave with a clear next step, whether or not it's us.</p></div>
+      <div class="step"><span class="n">Step 1</span><span class="dur">30 min</span><div class="track"><i style="width:4%"></i></div><h3>Data review</h3><p>We look at what your customers, raters or regulators are asking for and where your data lives today. You leave with a clear next step, whether or not it's us.</p></div>
       <div class="step"><span class="n">Step 2</span><span class="dur">2 weeks</span><div class="track"><i style="width:16%"></i></div><h3>Diagnostic</h3><p>We map sites, suppliers, calculations and reporting formats, and agree a fixed scope and price.</p></div>
       <div class="step"><span class="n">Step 3</span><span class="dur">6–12 weeks</span><div class="track"><i style="width:100%"></i></div><h3>Build</h3><p>We configure the system from our templates, load your real data and test it with the people who'll use it.</p></div>
-      <div class="step"><span class="n">Step 4</span><span class="dur">Ongoing</span><div class="track"><i style="width:60%;opacity:.5"></i></div><h3>Support</h3><p>Factor updates, new reporting cycles and rule changes. The system adapts as CBAM and BRSR details move.</p></div>
+      <div class="step"><span class="n">Step 4</span><span class="dur">Ongoing</span><div class="track"><i style="width:60%;opacity:.5"></i></div><h3>Support</h3><p>Factor updates, new reporting cycles and rule changes. The system keeps up as CBAM, ESOS and reporting rules move.</p></div>
     </div>
     <div class="partner-note">
       <p>Already working with an ESG consultant or verifier? Good. They advise and sign off; we build the data system they rely on.</p>
-      <a href="#book">Partner with Climoz →</a>
+      <a href="/how-we-work/">More on how we work →</a>
     </div>
   </div>
 </section>
@@ -519,14 +254,15 @@ footer a:hover{color:var(--band-fg)}
       <table class="cmp">
         <thead><tr><th></th><th>Spreadsheets</th><th>ESG SaaS platform</th><th>Consultancy only</th><th class="us">Climoz</th></tr></thead>
         <tbody>
-          <tr><th>Fits your process</th><td class="m">Yes, until it breaks</td><td class="m">You adapt to the platform</td><td class="m">Advice, not a system</td><td class="us">Built around how your plants and suppliers work</td></tr>
-          <tr><th>Unusual calculations</th><td class="m">Fragile formulas</td><td class="m">Often a workaround</td><td class="m">Done by hand each cycle</td><td class="us">Precursors, plantation growth, custom factors</td></tr>
+          <tr><th>Fits your process</th><td class="m">Yes, until it breaks</td><td class="m">You adapt to the platform</td><td class="m">Advice, not a system</td><td class="us">Built around how your sites and suppliers work</td></tr>
+          <tr><th>Unusual calculations</th><td class="m">Fragile formulas</td><td class="m">Often a workaround</td><td class="m">Done by hand each cycle</td><td class="us">Precursors, custom factors, site-specific methods</td></tr>
           <tr><th>Supplier data collection</th><td class="m">Email and attachments</td><td class="m">Included, fixed forms</td><td class="m">Not included</td><td class="us">Portal with your questions, tiers and reminders</td></tr>
           <tr><th>Audit trail</th><td class="m">None</td><td class="m">Yes</td><td class="m">In the report</td><td class="us">Every figure traced to its source</td></tr>
           <tr><th>Who owns it</th><td class="m">You</td><td class="m">Vendor, per-seat subscription</td><td class="m">Consultant's files</td><td class="us">You, on your own Zoho account</td></tr>
         </tbody>
       </table>
     </div>
+    <p class="cmp-note"><b>Climoz works alongside EcoVadis, Sedex and CDP.</b> We hold the evidence. They get the answers.</p>
   </div>
 </section>
 
@@ -535,24 +271,25 @@ footer a:hover{color:var(--band-fg)}
   <div class="wrap split">
     <div>
       <p class="label" style="color:var(--leaf)">Built on Zoho</p>
-      <h2 style="margin-top:16px">Low-code is a good fit for calculation-heavy ESG work.</h2>
-      <p class="lede" style="margin-top:16px">Emission factors, Scope 1–3 and supplier scoring change every year. On Zoho, we change a formula, not a codebase, and you can keep running it yourself.</p>
+      <h2 style="margin-top:16px">Low-code is a good fit for evidence-heavy ESG work.</h2>
+      <p class="lede" style="margin-top:16px">Emission factors, scheme questions and supplier scoring change every year. On Zoho, we change a form or a formula, not a codebase, and you can keep running it yourself.</p>
       <div class="stack">
-        <div><b>Zoho Creator</b><span>Data collection, calculators, supplier portals and approval workflows</span></div>
+        <div><b>Zoho Creator</b><span>Evidence libraries, calculators, supplier portals and approval workflows</span></div>
         <div><b>Zoho Analytics</b><span>Emissions dashboards, site comparisons and disclosure tables</span></div>
-        <div><b>Zoho CRM</b><span>Supplier and buyer records, follow-ups and RFP links</span></div>
+        <div><b>Zoho CRM</b><span>Supplier and customer records, requests and follow-ups</span></div>
         <div><b>Frappe (optional)</b><span>Open-source option where you want to self-host</span></div>
       </div>
+      <p class="pilot"><b>Fixed-scope pilots from £5,000 / USD 6,500.</b> You get a fixed price after the 2-week diagnostic.</p>
     </div>
     <div class="trust">
       <h3>Your data, your system</h3>
       <ul>
         <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><div><b>You own the app and the data</b><span>Built in your Zoho account. No lock-in to Climoz.</span></div></li>
-        <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><div><b>Data residency in India</b><span>Hosted in Zoho's Indian data centres if you need it.</span></div></li>
-        <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><div><b>Role-based access</b><span>Suppliers see only their own records; plant teams see only their site.</span></div></li>
+        <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><div><b>Hosted in your region</b><span>Zoho runs data centres in the EU, US, Australia, Canada, Saudi Arabia, UAE and India.</span></div></li>
+        <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><div><b>Role-based access</b><span>Suppliers see only their own records; site teams see only their site.</span></div></li>
         <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><div><b>Method on the page</b><span>Every calculation shows its factor, source and version.</span></div></li>
       </ul>
-      <p class="never"><b>What we don't do:</b> certify claims or promise compliance. You and your verifier sign off; we make sure the data behind it holds up.</p>
+      <p class="never"><b>What we don't do:</b> certify claims, award ratings or promise compliance. You and your verifier sign off; we make sure the data behind it holds up.</p>
     </div>
   </div>
 </section>
@@ -563,7 +300,7 @@ footer a:hover{color:var(--band-fg)}
     <div>
       <p class="label" style="color:var(--leaf)">Our roots</p>
       <h2 style="margin-top:16px">Climoz is an EdZola company.</h2>
-      <p class="lede" style="margin-top:16px">EdZola has spent six years building data systems for organisations where the numbers matter: programme MIS, donor CRMs, environmental monitoring. Climoz brings the same team and method to corporate ESG and climate data.</p>
+      <p class="lede" style="margin-top:16px">EdZola has spent six years building data systems where the numbers get checked: programme MIS, donor CRMs and environmental monitoring across India, the UK, the US and East Africa. Climoz brings the same team and method to company ESG and supplier data.</p>
       <p style="margin-top:20px"><a href="https://www.edzola.com/" style="font-weight:600;color:var(--leaf)">Visit edzola.com →</a></p>
     </div>
     <div class="figs">
@@ -582,10 +319,9 @@ footer a:hover{color:var(--band-fg)}
       <p class="label">Insights</p>
       <h2>Plain-language guides for the people doing the work.</h2>
     </div>
-    <div class="posts">
-      <a class="post" href="#insights"><span class="label">CBAM · 8 min</span><h3>CBAM for Indian MSME exporters: what data your EU buyer will ask for</h3><p>The records you need per installation, and where default values cost you.</p></a>
-      <a class="post" href="#insights"><span class="label">Supplier ESG · 6 min</span><h3>How to build a supplier ESG questionnaire suppliers actually complete</h3><p>Fewer questions, better evidence, and a score procurement can use.</p></a>
-      <a class="post" href="#insights"><span class="label">Choosing a system · 7 min</span><h3>Spreadsheet, ESG SaaS or custom app: choosing an emissions data system</h3><p>An honest comparison by company size, data shape and budget.</p></a>
+    <div class="posts" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+      <a class="post" href="/insights/ecovadis-evidence-checklist/"><span class="label">EcoVadis · Checklist</span><h3>EcoVadis evidence checklist: what to collect before your assessment</h3><p>The documents behind each theme, who should own them and how often they need renewing.</p></a>
+      <a class="post" href="/insights/sustainability-questionnaires/"><span class="label">Supplier evidence · Guide</span><h3>Answer customer sustainability questionnaires once</h3><p>Why EcoVadis, Sedex, CDP and customer questionnaires overlap, and how to answer them from one evidence set.</p></a>
     </div>
   </div>
 </section>
@@ -595,11 +331,11 @@ footer a:hover{color:var(--band-fg)}
   <div class="wrap">
     <div>
       <p class="label" style="color:var(--leaf)">Book a review</p>
-      <h2 style="margin-top:16px">Book a 30-minute ESG data review.</h2>
+      <h2 style="margin-top:16px">Book a 30-minute data review.</h2>
       <p class="lede" style="margin-top:16px">A working call with someone who builds these systems. No slides, no upselling.</p>
       <div class="agenda">
-        <div><span class="num">00–10</span><span>What your buyers, assessors or regulators are asking for</span></div>
-        <div><span class="num">10–20</span><span>Where that data lives today, and what breaks</span></div>
+        <div><span class="num">00–10</span><span>What your customers, raters or regulators are asking for</span></div>
+        <div><span class="num">10–20</span><span>Where that evidence lives today, and what breaks</span></div>
         <div><span class="num">20–30</span><span>The smallest system that would fix it, with a rough timeline</span></div>
       </div>
     </div>
@@ -619,24 +355,28 @@ footer a:hover{color:var(--band-fg)}
       </div>
       <div class="row2">
         <div class="field"><label for="f-email">Work email</label><input id="f-email" name="Email" type="email" autocomplete="email" maxlength="100" required></div>
-        <div class="field"><label for="f-role">Your team</label>
-          <select id="f-role"><option>Sustainability / ESG</option><option>Procurement</option><option>Export / plant operations</option><option>Finance / company secretary</option><option>Carbon projects / climate finance</option><option>Other</option></select></div>
+        <div class="field"><label for="f-country">Country</label><input id="f-country" autocomplete="country-name" maxlength="60" list="countries" required>
+          <datalist id="countries"><option value="United Kingdom"><option value="India"><option value="United States"><option value="Germany"><option value="Netherlands"><option value="France"><option value="Australia"><option value="United Arab Emirates"><option value="Ireland"><option value="Canada"></datalist></div>
       </div>
+      <div class="field"><label for="f-role">Your team</label>
+        <select id="f-role"><option>Sustainability / ESG</option><option>Procurement</option><option>Bids and tenders</option><option>Operations / plant</option><option>Import / export</option><option>Finance / company secretary</option><option>Other</option></select></div>
       <fieldset>
         <legend>What do you need first?</legend>
         <div class="opts">
+          <label><input type="checkbox" id="o-ev" name="need" value="Supplier evidence (EcoVadis, Sedex)"> Supplier evidence (EcoVadis, Sedex)</label>
+          <label><input type="checkbox" id="o-portal" name="need" value="Supplier portal"> Supplier portal</label>
           <label><input type="checkbox" id="o-cbam" name="need" value="CBAM"> CBAM</label>
-          <label><input type="checkbox" id="o-sup" name="need" value="Supplier ESG"> Supplier ESG</label>
-          <label><input type="checkbox" id="o-ghg" name="need" value="GHG"> GHG inventory</label>
-          <label><input type="checkbox" id="o-brsr" name="need" value="BRSR"> BRSR data</label>
-          <label><input type="checkbox" id="o-mrv" name="need" value="MRV"> Project MRV</label>
-          <label><input type="checkbox" id="o-unsure" name="need" value="Not sure"> Not sure yet</label>
+          <label><input type="checkbox" id="o-crp" name="need" value="Carbon reduction plan"> Carbon reduction plan</label>
+          <label><input type="checkbox" id="o-ghg" name="need" value="GHG inventory"> GHG inventory</label>
+          <label><input type="checkbox" id="o-india" name="need" value="India (BRSR/CCTS)"> India (BRSR/CCTS)</label>
+          <label><input type="checkbox" id="o-unsure" name="need" value="Not sure yet"> Not sure yet</label>
         </div>
       </fieldset>
-      <div class="field"><label for="f-context">What is getting in the way today?</label><textarea id="f-context" placeholder="For example, our buyer needs product-level emissions data, but the source records sit across several teams." required></textarea></div>
+      <div class="field"><label for="f-context">What is getting in the way today?</label><textarea id="f-context" placeholder="For example, our EcoVadis reassessment is due in March and last year's evidence is spread across three shared drives." required></textarea></div>
+      <label class="consent"><input type="checkbox" id="f-consent" required><span>I agree Climoz can contact me about this request. <a href="/privacy/">Privacy notice</a></span></label>
       <button class="btn btn-primary" type="submit" style="justify-self:start">Request a time</button>
       <p class="form-msg" id="formMsg" role="status" aria-live="polite" hidden></p>
-      <p class="form-foot">We reply within one working day. Your details go only to the Climoz team.</p>
+      <p class="form-foot">We reply within one working day. Your details go only to the Climoz team. See our <a href="/privacy/">privacy notice</a>.</p>
     </form>
   </div>
 </section>
@@ -645,14 +385,14 @@ footer a:hover{color:var(--band-fg)}
 <footer>
   <div class="wrap">
     <div>
-      <a class="brand" href="#top"><b>clim<i style="font-style:normal;color:var(--leaf)">o</i>z</b><small>an EdZola company</small></a>
-      <p style="margin-top:14px;max-width:36ch">ESG and climate data systems for Indian exporters, suppliers and listed companies.</p>
+      <a class="brand" href="/"><b>clim<i style="font-style:normal;color:var(--leaf)">o</i>z</b><small>an EdZola company</small></a>
+      <p style="margin-top:14px;max-width:36ch">ESG and supplier data systems built on Zoho.</p>
       <p class="ngo">Working with NGO partners? <a href="https://www.edzola.com/" style="text-decoration:underline">EdZola builds programme systems for nonprofits →</a></p>
     </div>
-    <div><h3>Systems</h3><ul><li><a href="#systems">CBAM data systems</a></li><li><a href="#systems">Supplier ESG</a></li><li><a href="#systems">GHG calculators</a></li><li><a href="#book">BRSR data collection</a></li><li><a href="#book">Project MRV</a></li></ul></div>
-    <div><h3>Company</h3><ul><li><a href="#how">How we work</a></li><li><a href="#zoho">Built on Zoho</a></li><li><a href="#zoho">Trust &amp; security</a></li><li><a href="#insights">Insights</a></li><li><a href="#book">Contact</a></li></ul></div>
+    <div><h3>Systems</h3><ul><li><a href="/supplier-evidence/">Supplier evidence</a></li><li><a href="/supplier-portal/">Supplier data portals</a></li><li><a href="/cbam/">CBAM data systems</a></li><li><a href="/carbon-reduction-plan/">Carbon reduction plans</a></li><li><a href="/india/">India: BRSR and CCTS</a></li><li><a href="/project-mrv/">Project MRV</a></li></ul></div>
+    <div><h3>Company</h3><ul><li><a href="/how-we-work/">How we work</a></li><li><a href="/built-on-zoho/">Built on Zoho</a></li><li><a href="/insights/">Insights</a></li><li><a href="/#book">Contact</a></li></ul></div>
     <div><h3>EdZola companies</h3><ul><li><a href="https://www.edzola.com/">EdZola</a></li><li><a href="https://www.edzola.com/zolashield/">ZolaShield</a></li><li><a href="https://www.edzola.com/zolabs/">Zolabs</a></li><li><a href="https://www.edzola.com/dozai/">DozAI</a></li><li><a href="https://www.edzola.com/fundzola/">FundZola</a></li></ul></div>
-    <div class="legal"><span>© 2026 Climoz, an EdZola company · Coimbatore, India</span><span><a href="https://www.edzola.com/privacy-policy-edzola">Privacy</a> · <a href="https://www.edzola.com/terms-of-use">Terms</a></span></div>
+    <div class="legal"><span>© 2026 Climoz, an EdZola company · Coimbatore, India</span><span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a><span data-consent-link></span></span></div>
   </div>
 </footer>
 
@@ -693,11 +433,13 @@ footer a:hover{color:var(--band-fg)}
     var name=f.elements['Last Name'];
     var company=f.elements.Company;
     var email=f.elements.Email;
+    var country=document.getElementById('f-country');
     var context=document.getElementById('f-context');
-    var required=[name,company,email,context];
+    var consent=document.getElementById('f-consent');
+    var required=[name,company,email,country,context];
     for(var i=0;i<required.length;i++){
       if(!required[i].value.trim()){
-        showMessage('Please complete all four fields before sending.',true);
+        showMessage('Please complete all the fields before sending.',true);
         required[i].focus();
         return;
       }
@@ -707,9 +449,14 @@ footer a:hover{color:var(--band-fg)}
       email.focus();
       return;
     }
+    if(!consent.checked){
+      showMessage('Please tick the box so we can contact you about this request.',true);
+      consent.focus();
+      return;
+    }
     var needs=[].slice.call(f.querySelectorAll('input[name="need"]:checked')).map(function(input){return input.value});
     landing.value=window.location.origin==='null'?'https://climoz.com/':window.location.origin+window.location.pathname;
-    details.value='Climoz enquiry\nTeam: '+document.getElementById('f-role').value+'\nNeed: '+(needs.length?needs.join(', '):'Not specified')+'\nChallenge: '+context.value.trim();
+    details.value='Climoz enquiry\nCountry: '+country.value.trim()+'\nTeam: '+document.getElementById('f-role').value+'\nNeed: '+(needs.length?needs.join(', '):'Not specified')+'\nChallenge: '+context.value.trim()+'\nContact consent: yes';
     if(typeof _wfa_track!=='undefined'&&_wfa_track.wfa_submit)_wfa_track.wfa_submit(e);
     submit.disabled=true;
     submit.textContent='Sending…';
