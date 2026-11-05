@@ -1,0 +1,162 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Worked ESG data system examples with sample data | Climoz</title>
+<meta name="description" content="Five worked examples of Climoz systems: CBAM shipment, supplier onboarding, GHG inventory, BRSR pack and project MRV, each with illustrative data.">
+<link rel="canonical" href="https://climoz.com/examples/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Climoz">
+<meta property="og:url" content="https://climoz.com/examples/">
+<meta property="og:title" content="Worked ESG data system examples with sample data | Climoz">
+<meta property="og:description" content="Five worked examples of Climoz systems: CBAM shipment, supplier onboarding, GHG inventory, BRSR pack and project MRV, each with illustrative data.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://climoz.com/"},{"@type":"ListItem","position":2,"name":"System examples","item":"https://climoz.com/examples/"}]},{"@type":"CollectionPage","name":"ESG data system examples","url":"https://climoz.com/examples/","isPartOf":{"@id":"https://climoz.com/#website"},"hasPart":[{"@type":"CreativeWork","name":"CBAM shipment calculation","url":"https://climoz.com/examples/#cbam-shipment"},{"@type":"CreativeWork","name":"Supplier ESG onboarding","url":"https://climoz.com/examples/#supplier-onboarding"},{"@type":"CreativeWork","name":"Multi-plant GHG inventory","url":"https://climoz.com/examples/#ghg-inventory"},{"@type":"CreativeWork","name":"BRSR data pack (India only)","url":"https://climoz.com/examples/#brsr-pack"},{"@type":"CreativeWork","name":"Project MRV monitoring round","url":"https://climoz.com/examples/#project-mrv"}]}]}
+</script>
+<script src="/assets/consent.js" defer></script>
+</head><body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Climoz home"><b>clim<i>o</i>z</b><small>an EdZola company</small></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/#systems">Systems</a>
+      <a href="/#who">Who it's for</a>
+      <a href="/how-we-work/">How we work</a>
+      <a href="/built-on-zoho/">Built on Zoho</a>
+      <a href="/insights/">Insights</a>
+    </nav>
+    <a class="btn btn-primary" href="/#book">Book a <span class="long">30-minute </span>review</a>
+  </div>
+</header>
+
+<main id="top">
+<div class="page-hero">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-current="page">System examples</li></ol></nav>
+    <p class="label">System examples</p>
+    <h1>What a Climoz system answers, with sample data.</h1>
+    <p class="lede">Five patterns we build on Zoho. Each one starts from a question a team actually gets asked, shows the data that goes in and the answer that comes out.</p>
+    <div class="ctas"><a class="btn btn-primary" href="/#book">Book a 30-minute data review</a></div>
+    <p class="meta">All names, figures and factors on this page are illustrative. They show the shape of the system, not a client's results.</p>
+  </div>
+</div>
+<section>
+  <div class="wrap">
+    <nav class="toc" aria-label="Examples on this page"><span class="label">On this page</span><ol><li><a href="#cbam-shipment">CBAM shipment calculation</a></li><li><a href="#supplier-onboarding">Supplier ESG onboarding</a></li><li><a href="#ghg-inventory">Multi-plant GHG inventory</a></li><li><a href="#brsr-pack">BRSR data pack (India only)</a></li><li><a href="#project-mrv">Project MRV monitoring round</a></li></ol></nav>
+    <div class="patterns">
+    <article class="sheet pattern" id="cbam-shipment" aria-labelledby="cbam-shipment-h">
+      <div class="sheet-head"><span class="label">Pattern · CBAM shipment calculation</span><span class="tag-ex">ILLUSTRATIVE DATA</span></div>
+      <div class="panel">
+        <h2 id="cbam-shipment-h">CBAM shipment calculation</h2>
+        <p class="q"><b>Question:</b> What are the embedded emissions for a 480-tonne shipment of hot-rolled coil to an EU buyer, using our plant data instead of default values?</p>
+        <div class="io">
+          <div><h3 class="label">Sample input</h3><table class="calc"><tr><td>Product<span class="f">hot-rolled coil, CN 7208</span></td><td>480 t</td></tr><tr><td>Direct emissions, installation<span class="f">fuel and process records, Q2</span></td><td>1.71 tCO₂e/t</td></tr><tr><td>Electricity use<span class="f">meter readings per tonne produced</span></td><td>0.42 MWh/t</td></tr><tr><td>Grid emission factor<span class="f">stored with its source and year</span></td><td>0.716 tCO₂/MWh</td></tr><tr><td>Precursor: purchased pig iron<span class="f">declared by 2 suppliers</span></td><td>0.18 tCO₂e/t</td></tr></table></div>
+          <div><h3 class="label">Sample output</h3><table class="calc"><tr><td>Direct</td><td>1.71 tCO₂e/t</td></tr><tr><td>Indirect, electricity<span class="f">0.42 × 0.716</span></td><td>0.30 tCO₂e/t</td></tr><tr><td>Precursors</td><td>0.18 tCO₂e/t</td></tr><tr class="total"><td>Specific embedded emissions × 480 t</td><td>2.19 → 1,051 tCO₂e</td></tr></table></div>
+        </div>
+        <div class="chips"><span class="chip warn">Supplier data: 11 of 14 received</span><span class="chip">Each figure links to its source record</span></div>
+        <p class="more"><a href="/cbam/">CBAM data systems →</a></p>
+      </div>
+    </article>
+    <article class="sheet pattern" id="supplier-onboarding" aria-labelledby="supplier-onboarding-h">
+      <div class="sheet-head"><span class="label">Pattern · Supplier ESG onboarding</span><span class="tag-ex">ILLUSTRATIVE DATA</span></div>
+      <div class="panel">
+        <h2 id="supplier-onboarding-h">Supplier ESG onboarding</h2>
+        <p class="q"><b>Question:</b> Which of our 120 tier-1 suppliers have current evidence for the questionnaire our largest customer sent?</p>
+        <div class="io">
+          <div><h3 class="label">Sample input</h3><table class="calc"><tr><td>Suppliers invited to the portal<span class="f">tiered by spend and risk</span></td><td>120</td></tr><tr><td>Questions per tier<span class="f">tier A 38 · tier B 22 · tier C 9</span></td><td>3 tiers</td></tr><tr><td>Evidence types requested<span class="f">policies, certificates, energy data</span></td><td>14</td></tr><tr><td>Reminder rule<span class="f">automatic, then escalated to the buyer</span></td><td>every 7 days</td></tr></table></div>
+          <div><h3 class="label">Sample output</h3><table class="calc"><tr><td>Complete, with evidence</td><td>61</td></tr><tr><td>Partly complete</td><td>23</td></tr><tr><td>Not started<span class="f">escalated to category managers</span></td><td>36</td></tr><tr class="total"><td>Responded</td><td>84 of 120 · 70%</td></tr></table></div>
+        </div>
+        <div class="chips"><span class="chip warn">9 certificates expire within 60 days</span><span class="chip warn">5 answers flagged for review</span></div>
+        <p class="more"><a href="/supplier-portal/">Supplier data portals →</a></p>
+      </div>
+    </article>
+    <article class="sheet pattern" id="ghg-inventory" aria-labelledby="ghg-inventory-h">
+      <div class="sheet-head"><span class="label">Pattern · Multi-plant GHG inventory</span><span class="tag-ex">ILLUSTRATIVE DATA</span></div>
+      <div class="panel">
+        <h2 id="ghg-inventory-h">Multi-plant GHG inventory</h2>
+        <p class="q"><b>Question:</b> What were Scope 1 and 2 emissions across our three plants last year, and which figures rest on estimates?</p>
+        <div class="io">
+          <div><h3 class="label">Sample input</h3><table class="calc"><tr><td>Plant A<span class="f">gas, diesel, 12 electricity invoices</span></td><td>214 entries</td></tr><tr><td>Plant B<span class="f">gas, LPG, 12 electricity invoices</span></td><td>167 entries</td></tr><tr><td>Plant C<span class="f">diesel, 11 electricity invoices</span></td><td>98 entries</td></tr><tr><td>Factor set<span class="f">year-stamped, version 3</span></td><td>FY 2025</td></tr></table></div>
+          <div><h3 class="label">Sample output</h3><table class="calc"><tr><td>Plant A<span class="f">Scope 1: 620 · Scope 2: 410</span></td><td>1,030 tCO₂e</td></tr><tr><td>Plant B<span class="f">Scope 1: 380 · Scope 2: 290</span></td><td>670 tCO₂e</td></tr><tr><td>Plant C<span class="f">Scope 1: 150 · Scope 2: 220</span></td><td>370 tCO₂e</td></tr><tr class="total"><td>Scope 1: 1,150 · Scope 2: 920</td><td>2,070 tCO₂e</td></tr></table></div>
+        </div>
+        <div class="chips"><span class="chip warn">Plant C March electricity is an estimate</span><span class="chip">Recalculates if a factor is corrected</span></div>
+        <p class="more"><a href="/carbon-reduction-plan/">Carbon reduction plans →</a></p>
+      </div>
+    </article>
+    <article class="sheet pattern" id="brsr-pack" aria-labelledby="brsr-pack-h">
+      <div class="sheet-head"><span class="label">Pattern · BRSR data pack (India only)</span><span class="tag-ex">ILLUSTRATIVE DATA</span></div>
+      <div class="panel">
+        <h2 id="brsr-pack-h">BRSR data pack (India only)</h2>
+        <p class="q"><b>Question:</b> Can we produce our Principle 6 energy and emissions figures for FY 2025-26, with evidence behind each one?</p>
+        <div class="io">
+          <div><h3 class="label">Sample input</h3><table class="calc"><tr><td>Electricity from the grid<span class="f">4 sites, monthly bills</span></td><td>18,400 GJ</td></tr><tr><td>Fuel<span class="f">diesel and furnace oil, purchase records</span></td><td>9,600 GJ</td></tr><tr><td>Scope 1 / Scope 2<span class="f">from the site inventory</span></td><td>2,100 / 3,700 tCO₂e</td></tr><tr><td>Revenue from operations<span class="f">from the finance team</span></td><td>₹1,400 crore</td></tr></table></div>
+          <div><h3 class="label">Sample output</h3><table class="calc"><tr><td>Total energy consumed<span class="f">18,400 + 9,600</span></td><td>28,000 GJ</td></tr><tr><td>Energy intensity<span class="f">per ₹ crore of revenue</span></td><td>20.0 GJ</td></tr><tr><td>Scope 1 + 2 emissions</td><td>5,800 tCO₂e</td></tr><tr class="total"><td>Emissions intensity per ₹ crore</td><td>4.14 tCO₂e</td></tr></table></div>
+        </div>
+        <div class="chips"><span class="chip">Each figure has an owner and an approver</span><span class="chip warn">Not an assurance opinion</span></div>
+        <p class="more"><a href="/india/">India: BRSR and CCTS →</a></p>
+      </div>
+    </article>
+    <article class="sheet pattern" id="project-mrv" aria-labelledby="project-mrv-h">
+      <div class="sheet-head"><span class="label">Pattern · Project MRV monitoring round</span><span class="tag-ex">ILLUSTRATIVE DATA</span></div>
+      <div class="panel">
+        <h2 id="project-mrv-h">Project MRV monitoring round</h2>
+        <p class="q"><b>Question:</b> How many trees survived in our agroforestry project at the second monitoring round, and is the evidence ready for the verifier?</p>
+        <div class="io">
+          <div><h3 class="label">Sample input</h3><table class="calc"><tr><td>Trees planted<span class="f">from the planting register</span></td><td>120,000</td></tr><tr><td>Plots sampled<span class="f">of 400, chosen at random by the app</span></td><td>42</td></tr><tr><td>Photos with GPS and time<span class="f">30 per plot, collected offline</span></td><td>1,260</td></tr><tr><td>Satellite boundary check<span class="f">plot polygons against imagery</span></td><td>42 plots</td></tr></table></div>
+          <div><h3 class="label">Sample output</h3><table class="calc"><tr><td>Survival rate in sampled plots</td><td>86%</td></tr><tr><td>Estimated surviving trees<span class="f">120,000 × 86%</span></td><td>103,200</td></tr><tr><td>Plots with boundary mismatch<span class="f">sent back to the field team</span></td><td>3</td></tr><tr class="total"><td>Verification pack</td><td>Ready after 3 fixes</td></tr></table></div>
+        </div>
+        <div class="chips"><span class="chip warn">3 plots need a field revisit</span><span class="chip">Raw photos kept with each plot record</span></div>
+        <p class="more"><a href="/project-mrv/">Project MRV →</a></p>
+      </div>
+    </article>
+    </div>
+  </div>
+</section>
+<section style="padding-top:0">
+  <div class="wrap cols">
+    <div>
+      <h2>What every pattern has in common</h2>
+      <ul class="ticks">
+        <li><b>A question first.</b> We design the system around the question someone will ask of it, not around a form.</li>
+        <li><b>Inputs with their source.</b> Every number links to the invoice, reading, declaration or photo it came from.</li>
+        <li><b>Method on the page.</b> Factors and formulas are stored with their year and version, so last year's answer can be rebuilt.</li>
+        <li><b>Flags, not silence.</b> Estimates, missing data and expiring evidence are shown, not smoothed over.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="label">Your version</span>
+      <h3>Your sites, suppliers and method</h3>
+      <p>These patterns are starting points. In the 2-week diagnostic we map your real data to one of them, or design a new one, and agree a fixed scope and price.</p>
+      <p class="out"><b>Next:</b> <a href="/pilot/">see how a fixed-scope pilot works</a></p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band">
+      <div><h2>Book a 30-minute data review.</h2><p>A working call with someone who builds these systems. You leave with a clear next step, whether or not it's us.</p></div>
+      <a class="btn btn-primary" href="/#book">Book a review <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="brand" href="/"><b>clim<i style="font-style:normal;color:var(--leaf)">o</i>z</b><small>an EdZola company</small></a>
+      <p style="margin-top:14px;max-width:36ch">ESG and supplier data systems built on Zoho.</p>
+      <p class="ngo">Working with NGO partners? <a href="https://www.edzola.com/" style="text-decoration:underline">EdZola builds programme systems for nonprofits →</a></p>
+    </div>
+    <div><h3>Systems</h3><ul><li><a href="/supplier-evidence/">Supplier evidence</a></li><li><a href="/supplier-portal/">Supplier data portals</a></li><li><a href="/cbam/">CBAM data systems</a></li><li><a href="/carbon-reduction-plan/">Carbon reduction plans</a></li><li><a href="/india/">India: BRSR and CCTS</a></li><li><a href="/project-mrv/">Project MRV</a></li></ul></div>
+    <div><h3>Company</h3><ul><li><a href="/how-we-work/">How we work</a></li><li><a href="/built-on-zoho/">Built on Zoho</a></li><li><a href="/pilot/">Pilots and pricing</a></li><li><a href="/examples/">System examples</a></li><li><a href="/compare/">Compare options</a></li><li><a href="/insights/">Insights</a></li><li><a href="/#book">Contact</a></li></ul></div>
+    <div><h3>EdZola companies</h3><ul><li><a href="https://www.edzola.com/">EdZola</a></li><li><a href="https://www.edzola.com/zolashield/">ZolaShield</a></li><li><a href="https://www.edzola.com/zolabs/">Zolabs</a></li><li><a href="https://www.edzola.com/dozai/">DozAI</a></li><li><a href="https://www.edzola.com/fundzola/">FundZola</a></li></ul></div>
+    <div class="legal"><span>© 2026 Climoz, an EdZola company · Coimbatore, India</span><span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a><span data-consent-link></span></span></div>
+  </div>
+</footer>
+</body></html>

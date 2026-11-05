@@ -25,7 +25,7 @@ Create `<slug>/index.html` by copying an existing page, so the header, footer an
 - `BreadcrumbList` JSON-LD, plus `Service`, `Article` or `FAQPage` where it fits
 - an entry in `sitemap.xml`
 
-`node scripts/check-site.mjs` enforces all of these.
+`node scripts/check-site.mjs` enforces all of these. It also checks that Open Graph tags match the title, description and canonical, that FAQ structured data matches the visible questions, that the last breadcrumb is the page itself, that images have alt text and form fields have labels, and that noindex pages stay out of the sitemap.
 
 ## Enquiry form
 

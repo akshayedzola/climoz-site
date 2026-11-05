@@ -93,6 +93,42 @@ for (const page of pages) {
   }
   if (isIndexable && url !== '/' && !html.includes('"BreadcrumbList"')) fail(`${where} missing BreadcrumbList structured data`);
 
+  // Publishing checks (CLZ-104): head tags agree, schema matches the page, basic accessibility.
+  if (!/<html lang="[a-z]{2}(-[A-Z]{2})?"/.test(html)) fail(`${where} <html> needs a lang attribute`);
+  if (!isIndexable && sitemapUrls.has(ORIGIN + url)) fail(`${where} noindex page is listed in sitemap.xml`);
+  if (isIndexable && title) {
+    const og = name => html.match(new RegExp(`<meta property="og:${name}" content="([^"]*)">`))?.[1];
+    if (og('url') !== ORIGIN + url) fail(`${where} og:url should match the canonical`);
+    if (og('title') !== title) fail(`${where} og:title should match <title>`);
+    if (og('description') !== description) fail(`${where} og:description should match the meta description`);
+  }
+  for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    let data; try { data = JSON.parse(m[1]); } catch { continue; }
+    const nodes = data['@graph'] || [data];
+    for (const node of nodes) {
+      if (node['@type'] === 'BreadcrumbList' && isIndexable) {
+        const last = node.itemListElement?.at(-1)?.item;
+        if (last !== ORIGIN + url) fail(`${where} last breadcrumb should be the page itself, found ${last}`);
+      }
+      if (node['@type'] === 'FAQPage') {
+        const visible = [...html.matchAll(/<summary>([\s\S]*?)<\/summary>/g)].map(s => decode(s[1].replace(/<[^>]+>/g, '')).trim());
+        for (const q of node.mainEntity || []) if (!visible.includes(q.name)) fail(`${where} FAQ structured data question not shown on the page: ${q.name}`);
+      }
+      if (isIndexable && ['Service', 'WebApplication', 'CollectionPage'].includes(node['@type']) && node.url && node.url !== ORIGIN + url) fail(`${where} ${node['@type']} url should be the canonical`);
+    }
+  }
+  for (const m of html.matchAll(/<img\b[^>]*>/g)) if (!/\salt=/.test(m[0])) fail(`${where} image without alt text`);
+  for (const m of html.matchAll(/<a\b[^>]*target="_blank"[^>]*>/g)) if (!/rel="[^"]*noopener/.test(m[0])) fail(`${where} target="_blank" link without rel="noopener"`);
+  const labelled = new Set([...html.matchAll(/<label[^>]*\sfor="([^"]+)"/g)].map(m => m[1]));
+  for (const m of html.matchAll(/<(input|select|textarea)\b[^>]*>/g)) {
+    const tag = m[0];
+    if (/type="(hidden|submit|button)"/.test(tag) || /aria-hidden="true"|tabindex="-1"/.test(tag)) continue;
+    const id = tag.match(/\sid="([^"]+)"/)?.[1];
+    const before = html.slice(0, m.index);
+    const wrapped = before.lastIndexOf('<label') > before.lastIndexOf('</label>');
+    if (!(id && labelled.has(id)) && !wrapped && !/aria-label(ledby)?=/.test(tag)) fail(`${where} form field without a label: ${tag.slice(0, 80)}`);
+  }
+
   // Links: in-page anchors and root-relative paths must resolve.
   const ids = new Set([...html.matchAll(/\sid=["']([^"']+)["']/g)].map(m => m[1]));
   for (const m of html.matchAll(/\s(?:href|src)=["']([^"']+)["']/g)) {
