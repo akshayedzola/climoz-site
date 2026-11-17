@@ -37,8 +37,16 @@ else {
   requireText('name="aG9uZXlwb3Q"', 'form honeypot');
   requireText("field.name='Zm9ybWZpbGxpbmd0aW1l'", 'Zoho rotating anti-bot field loader');
   requireText('id="f-consent"', 'contact consent checkbox');
+  requireText('name="xnQsjsdp" value="7d922919f0d9aca3cda918dd997a1d23e5c5d410c2f817f58cca008b0875a8f4"', 'current Zoho webform identifier (xnQsjsdp)');
+  requireText('data-sitekey="6Lez7yQuAAAAAP62ZIuqJVFR60mmaFNIYETZi87W"', 'Zoho webform reCAPTCHA site key');
+  requireText("https://www.google.com/recaptcha/api.js?onload=climozRecaptchaReady&render=explicit", 'reCAPTCHA loader');
+  requireText("size:'invisible'", 'invisible reCAPTCHA (the webform key is the invisible type)');
+  requireText('runCaptcha(e);', 'reCAPTCHA check before submission');
   if (home.html.includes('Design preview:')) fail('Homepage: found design-preview form copy');
 }
+
+// reCAPTCHA belongs to the CRM webform only; no other page should load it.
+for (const page of pages) if (page.url !== '/' && /google\.com\/recaptcha|grecaptcha/.test(page.html)) fail(`${page.url}: reCAPTCHA should load only with the CRM webform`);
 
 // Site files.
 for (const f of ['favicon.svg', 'CNAME', 'robots.txt', 'sitemap.xml', '404.html', 'assets/site.css', 'assets/consent.js']) {
