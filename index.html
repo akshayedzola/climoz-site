@@ -340,9 +340,9 @@
       </div>
     </div>
     <form class="book" id="bookForm" name="WebToLeads4805054000017631043" accept-charset="UTF-8" novalidate>
-      <input type="hidden" name="xnQsjsdp" value="1aade6b3cf8605c22d9acb6ee15fe0c428d2691bb6cf81fb9b3d225fdc32db68">
+      <input type="hidden" name="xnQsjsdp" value="7d922919f0d9aca3cda918dd997a1d23e5c5d410c2f817f58cca008b0875a8f4">
       <input type="hidden" name="zc_gad" id="zc_gad" value="">
-      <input type="hidden" name="xmIwtLD" value="3b79072affb4a67d4ba6bb28b81a6a3d0aa0725f4c8cad64a6070747b18b1cb86d26b59432bd3601ee65f8da8a548744">
+      <input type="hidden" name="xmIwtLD" value="9bfb8bc0cb80151737252bd05386fa9484fff68fb8f04a41886279fed287af1d1899868bfd7ccb46c6d9affe29c7c55b">
       <input type="hidden" name="actionType" value="TGVhZHM=">
       <input type="hidden" name="returnURL" value="null">
       <input type="hidden" name="LEADCF41" value="Zoho Consulting">
@@ -374,6 +374,10 @@
       </fieldset>
       <div class="field"><label for="f-context">What is getting in the way today?</label><textarea id="f-context" placeholder="For example, our EcoVadis reassessment is due in March and last year's evidence is spread across three shared drives." required></textarea></div>
       <label class="consent"><input type="checkbox" id="f-consent" required><span>I agree Climoz can contact me about this request. <a href="/privacy/">Privacy notice</a></span></label>
+      <div class="captcha">
+        <div id="recap4805054000017631043" data-sitekey="6Lez7yQuAAAAAP62ZIuqJVFR60mmaFNIYETZi87W"></div>
+        <noscript><p>Please enable JavaScript to complete the security check and send this form.</p></noscript>
+      </div>
       <button class="btn btn-primary" type="submit" style="justify-self:start">Request a time</button>
       <p class="form-msg" id="formMsg" role="status" aria-live="polite" hidden></p>
       <p class="form-foot">We reply within one working day. Your details go only to the Climoz team. See our <a href="/privacy/">privacy notice</a>.</p>
@@ -424,6 +428,41 @@
     msg.hidden=false;
     msg.classList.toggle('error',!!isError);
   }
+  // Google reCAPTCHA for the Zoho CRM webform. Loaded only on this page, and only
+  // once the form is close to view or in use, so other visits make no Google request.
+  var captchaBox=document.getElementById('recap4805054000017631043');
+  var captchaId=null,captchaRequested=false,captchaFailed=false;
+  window.climozRecaptchaReady=function(){
+    captchaId=window.grecaptcha.render(captchaBox,{
+      sitekey:captchaBox.getAttribute('data-sitekey'),
+      theme:'light',
+      size:captchaBox.clientWidth<304?'compact':'normal',
+      callback:function(){if(msg.classList.contains('error'))msg.hidden=true}
+    });
+  };
+  function loadCaptcha(){
+    if(captchaRequested)return;
+    captchaRequested=true;
+    var s=document.createElement('script');
+    s.src='https://www.google.com/recaptcha/api.js?onload=climozRecaptchaReady&render=explicit';
+    s.async=true;s.defer=true;
+    s.addEventListener('error',function(){captchaFailed=true});
+    document.head.appendChild(s);
+  }
+  function captchaToken(){
+    return captchaId!==null&&window.grecaptcha?window.grecaptcha.getResponse(captchaId):'';
+  }
+  function resetCaptcha(){
+    if(captchaId!==null&&window.grecaptcha)window.grecaptcha.reset(captchaId);
+  }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      if(entries.some(function(x){return x.isIntersecting})){io.disconnect();loadCaptcha();}
+    },{rootMargin:'600px 0px'});
+    io.observe(f);
+  }else loadCaptcha();
+  f.addEventListener('focusin',loadCaptcha);
+
   function validEmail(value){
     var at=value.indexOf('@'),dot=value.lastIndexOf('.');
     return at>0&&dot>at+1&&dot+2<value.length;
@@ -454,6 +493,12 @@
       consent.focus();
       return;
     }
+    if(!captchaToken()){
+      showMessage(captchaFailed?'The security check could not load. Please refresh the page and try again.':'Please complete the security check before sending.',true);
+      loadCaptcha();
+      captchaBox.scrollIntoView({block:'center'});
+      return;
+    }
     var needs=[].slice.call(f.querySelectorAll('input[name="need"]:checked')).map(function(input){return input.value});
     landing.value=window.location.origin==='null'?'https://climoz.com/':window.location.origin+window.location.pathname;
     details.value='Climoz enquiry\nCountry: '+country.value.trim()+'\nTeam: '+document.getElementById('f-role').value+'\nNeed: '+(needs.length?needs.join(', '):'Not specified')+'\nChallenge: '+context.value.trim()+'\nContact consent: yes';
@@ -466,10 +511,11 @@
         if(typeof data==='object'&&data.invalidCaptcha==='true')throw new Error(data.actionvalue||'Please complete the security check and try again.');
         if(typeof data==='object'&&data.message&&data.actionsubmit==='error_msg')throw new Error(data.message);
         f.reset();
+        resetCaptcha();
         showMessage('Thank you. Your note has been sent to the Climoz team.',false);
         if(typeof _wfa_track!=='undefined'&&_wfa_track.wfa_post_submit)_wfa_track.wfa_post_submit(e);
       })
-      .catch(function(error){showMessage(error.message||'We could not send the form just now. Please try again in a moment.',true)})
+      .catch(function(error){resetCaptcha();showMessage(error.message||'We could not send the form just now. Please try again in a moment.',true)})
       .finally(function(){submit.disabled=false;submit.textContent=submitLabel});
   });
 
