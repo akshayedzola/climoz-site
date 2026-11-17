@@ -40,7 +40,8 @@ else {
   requireText('name="xnQsjsdp" value="7d922919f0d9aca3cda918dd997a1d23e5c5d410c2f817f58cca008b0875a8f4"', 'current Zoho webform identifier (xnQsjsdp)');
   requireText('data-sitekey="6Lez7yQuAAAAAP62ZIuqJVFR60mmaFNIYETZi87W"', 'Zoho webform reCAPTCHA site key');
   requireText("https://www.google.com/recaptcha/api.js?onload=climozRecaptchaReady&render=explicit", 'reCAPTCHA loader');
-  requireText('if(!captchaToken()){', 'reCAPTCHA check before submission');
+  requireText("size:'invisible'", 'invisible reCAPTCHA (the webform key is the invisible type)');
+  requireText('runCaptcha(e);', 'reCAPTCHA check before submission');
   if (home.html.includes('Design preview:')) fail('Homepage: found design-preview form copy');
 }
 

@@ -275,7 +275,7 @@ legend{font:500 13.5px/1.2 var(--body);margin-bottom:8px}
 .consent{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;font-size:14.5px}
 .consent input{accent-color:var(--leaf);margin:4px 0 0;width:18px;height:18px}
 .consent a{color:var(--leaf)}
-.captcha{min-height:78px;max-width:100%;overflow:hidden}
+.captcha{min-height:60px;max-width:100%}
 .form-msg{font-size:14.5px;padding:12px 14px;border-radius:8px;background:var(--leaf-soft)}
 .form-msg.error{background:var(--ochre-soft);color:var(--ink)}
 

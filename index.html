@@ -428,17 +428,24 @@
     msg.hidden=false;
     msg.classList.toggle('error',!!isError);
   }
-  // Google reCAPTCHA for the Zoho CRM webform. Loaded only on this page, and only
-  // once the form is close to view or in use, so other visits make no Google request.
+  // Google reCAPTCHA for the Zoho CRM webform. The webform's key is the invisible type,
+  // so the check runs when the visitor presses submit, with Google's badge shown inline.
+  // Loaded only on this page, and only once the form is close to view or in use.
   var captchaBox=document.getElementById('recap4805054000017631043');
-  var captchaId=null,captchaRequested=false,captchaFailed=false;
+  var captchaId=null,captchaRequested=false,captchaFailed=false,pendingEvent=null;
+  function captchaUnavailable(){
+    pendingEvent=null;
+    showMessage('The security check could not load. Please refresh the page and try again.',true);
+  }
   window.climozRecaptchaReady=function(){
     captchaId=window.grecaptcha.render(captchaBox,{
       sitekey:captchaBox.getAttribute('data-sitekey'),
-      theme:'light',
-      size:captchaBox.clientWidth<304?'compact':'normal',
-      callback:function(){if(msg.classList.contains('error'))msg.hidden=true}
+      size:'invisible',
+      badge:'inline',
+      callback:function(){var ev=pendingEvent;pendingEvent=null;send(ev)},
+      'error-callback':captchaUnavailable
     });
+    if(pendingEvent)window.grecaptcha.execute(captchaId);
   };
   function loadCaptcha(){
     if(captchaRequested)return;
@@ -446,11 +453,15 @@
     var s=document.createElement('script');
     s.src='https://www.google.com/recaptcha/api.js?onload=climozRecaptchaReady&render=explicit';
     s.async=true;s.defer=true;
-    s.addEventListener('error',function(){captchaFailed=true});
+    s.addEventListener('error',function(){captchaFailed=true;if(pendingEvent)captchaUnavailable()});
     document.head.appendChild(s);
   }
-  function captchaToken(){
-    return captchaId!==null&&window.grecaptcha?window.grecaptcha.getResponse(captchaId):'';
+  function runCaptcha(e){
+    pendingEvent=e;
+    if(captchaFailed)return captchaUnavailable();
+    if(captchaId===null)return loadCaptcha();
+    window.grecaptcha.reset(captchaId);
+    window.grecaptcha.execute(captchaId);
   }
   function resetCaptcha(){
     if(captchaId!==null&&window.grecaptcha)window.grecaptcha.reset(captchaId);
@@ -493,15 +504,14 @@
       consent.focus();
       return;
     }
-    if(!captchaToken()){
-      showMessage(captchaFailed?'The security check could not load. Please refresh the page and try again.':'Please complete the security check before sending.',true);
-      loadCaptcha();
-      captchaBox.scrollIntoView({block:'center'});
-      return;
-    }
     var needs=[].slice.call(f.querySelectorAll('input[name="need"]:checked')).map(function(input){return input.value});
     landing.value=window.location.origin==='null'?'https://climoz.com/':window.location.origin+window.location.pathname;
     details.value='Climoz enquiry\nCountry: '+country.value.trim()+'\nTeam: '+document.getElementById('f-role').value+'\nNeed: '+(needs.length?needs.join(', '):'Not specified')+'\nChallenge: '+context.value.trim()+'\nContact consent: yes';
+    msg.hidden=true;
+    runCaptcha(e);
+  });
+
+  function send(e){
     if(typeof _wfa_track!=='undefined'&&_wfa_track.wfa_submit)_wfa_track.wfa_submit(e);
     submit.disabled=true;
     submit.textContent='Sending…';
@@ -517,7 +527,7 @@
       })
       .catch(function(error){resetCaptcha();showMessage(error.message||'We could not send the form just now. Please try again in a moment.',true)})
       .finally(function(){submit.disabled=false;submit.textContent=submitLabel});
-  });
+  }
 
   if(typeof _wfa_fstprtcken==='undefined')window._wfa_fstprtcken={};
   window._wfa_fstprtcken[4805054000017631043]=true;
